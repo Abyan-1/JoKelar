@@ -33,7 +33,7 @@ export function render() {
           </div>
 
           <!-- Exactly 4 Columns in a single row on desktop, 2x2 responsive grid on tablet/mobile -->
-          <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-space-md lg:gap-space-lg mb-space-xl">
+          <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-12 mb-space-xl">
             <!-- Founder 1 -->
             <div class="group flex flex-col items-center text-center p-space-md bg-surface-container-lowest/80 backdrop-blur-sm rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 reveal reveal-delay-1">
               <div class="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-52 lg:h-52 mb-space-md overflow-hidden rounded-full p-1 bg-gradient-to-tr from-primary via-primary-container to-secondary-container shadow-md group-hover:shadow-primary/30 transition-all duration-300">

@@ -150,7 +150,7 @@ export function render() {
                 Katalog Tugas &amp; Portofolio Selesai
               </h1>
               <p class="font-body-lg text-body-lg text-on-surface-variant">
-                Bukti nyata hasil pengerjaan tim JoKelar dengan standar kualitas terbaik, bebas plagiarisme, dan garansi revisi tuntas sampai dapat nilai A.
+                Bukti nyata hasil pengerjaan JoKelar. Bebas plagiarisme &amp; garansi revisi tuntas.
               </p>
             </div>
             
@@ -204,7 +204,7 @@ export function render() {
         </div>
 
         <!-- Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-space-lg" id="catalogGrid">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 xl:gap-12" id="catalogGrid">
           
           <!-- CARD 1 -->
           <article class="catalog-item group flex flex-col bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden transform hover:-translate-y-1 cursor-pointer reveal reveal-delay-1" data-category="mahasiswa" data-id="item1">
@@ -449,10 +449,10 @@ export function render() {
               <span>Promo Mahasiswa &amp; Pelajar Baru</span>
             </div>
             <h2 class="font-headline-lg text-headline-lg text-on-primary tracking-tight leading-tight">
-              Punya Tugas Serupa? Pesan Sekarang &amp; Dapatkan Diskon hingga 25%!
+              Punya Tugas Serupa? Diskon hingga 25%!
             </h2>
-            <p class="font-body-lg text-body-lg text-on-primary-container max-w-2xl">
-              Jangan biarkan deadline menumpuk memicu burnout. Konsultasikan detail tugasmu secara gratis bersama admin konsultan akademik JoKelar via WhatsApp hari ini.
+            <p class="font-body-md text-body-md text-on-primary-container max-w-lg">
+              Konsultasikan detail tugasmu gratis via WhatsApp.
             </p>
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md pt-space-xs">
               <a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-space-md bg-secondary-container text-on-secondary-fixed font-headline-sm text-headline-sm font-bold rounded-xl shadow-md hover:bg-secondary-fixed transition-all active:scale-[0.98]" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
@@ -461,7 +461,7 @@ export function render() {
               </a>
               <div class="flex items-center gap-space-sm text-on-primary-container font-body-sm text-body-sm">
                 <span class="material-symbols-outlined text-secondary-container">verified_user</span>
-                <span>Garansi revisi gratis sampai dosen/guru puas</span>
+                <span>Garansi revisi gratis</span>
               </div>
             </div>
           </div>

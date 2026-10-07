@@ -3,6 +3,8 @@
  * Renders the site-wide footer with navigation, categories, and contact.
  */
 
+import logoSrc from '../assets/logo.jpeg';
+
 /**
  * Render the footer HTML.
  * @returns {string}
@@ -15,7 +17,7 @@ export function renderFooter() {
           <!-- Brand Column -->
           <div class="md:col-span-5 flex flex-col gap-space-md">
             <div class="flex items-center gap-space-sm">
-              <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-bold">JK</div>
+              <img src="${logoSrc}" alt="JoKelar Logo" class="h-10 w-auto rounded-lg object-contain" />
               <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">JoKelar</span>
             </div>
             <p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Platform asisten tugas akademik resmi &amp; terpercaya untuk pelajar SMP, SMA, dan mahasiswa seluruh Indonesia. Cepat, bergaransi, dan anti-plagiarisme.</p>

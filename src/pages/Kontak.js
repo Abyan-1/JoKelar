@@ -36,8 +36,8 @@ export function render() {
               <h1 class="font-display-hero text-display-hero-mobile md:text-display-hero text-on-surface tracking-tight leading-none mb-space-xs">
                 Hubungi JoKelar.
               </h1>
-              <p class="font-headline-sm text-headline-sm text-on-surface-variant font-medium max-w-2xl">
-                Solusi kilat anti-panik tugas kuliah &amp; sekolah. Konsultasikan deadline, hitung estimasi biaya, atau langsung amankan slot pengerjaan.
+              <p class="font-headline-sm text-headline-sm text-on-surface-variant font-medium max-w-xl">
+                Konsultasi deadline, estimasi biaya, atau langsung amankan slot.
               </p>
             </div>
             <!-- Operating Hours Pill Indicator -->
@@ -54,7 +54,7 @@ export function render() {
         </div>
 
         <!-- 12-Column Responsive Layout -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
           <!-- Left Column: Channel Cards (7 Cols on Desktop) -->
           <div class="lg:col-span-7 flex flex-col gap-space-lg reveal-left">
@@ -78,8 +78,8 @@ export function render() {
                   <span class="font-label-code text-label-code text-on-surface-variant">&lt; 5 Menit</span>
                 </div>
               </div>
-              <p class="font-body-md text-body-md text-on-surface-variant mb-space-lg">
-                Terhubung langsung dengan koordinator bidang studi. Kirim silabus, panduan modul, atau brief tugas untuk audit &amp; penawaran harga instan tanpa ribet.
+              <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+                Kirim brief tugas langsung ke admin untuk penawaran harga instan.
               </p>
               <div class="bg-surface-container-low rounded-xl p-space-md mb-space-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
                 <div class="flex items-center gap-space-sm">
@@ -107,7 +107,7 @@ export function render() {
             </div>
 
             <!-- 2. Split Social Grid (Instagram & Twitter / X) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
                 <div>
                   <div class="flex items-center justify-between mb-space-sm">
@@ -119,7 +119,7 @@ export function render() {
                   <h3 class="font-headline-sm text-headline-sm text-on-surface">Instagram</h3>
                   <p class="font-label-code text-label-code text-primary font-bold mb-space-xs">@jokelar.id</p>
                   <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
-                    Ikuti tips jitu akademik kuliah, voucher diskon bulanan, testimoni nilai A, &amp; update slot joki harian.
+                    Tips akademik, voucher diskon &amp; update harian.
                   </p>
                 </div>
                 <a class="w-full py-space-sm px-space-md bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface font-label-badge text-label-badge uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-space-xs" href="https://www.instagram.com/jokelartugas?stkn=MXI0NjgzZzVxcGV5eg==" rel="noopener noreferrer" target="_blank">
@@ -139,7 +139,7 @@ export function render() {
                   <h3 class="font-headline-sm text-headline-sm text-on-surface">Twitter / X</h3>
                   <p class="font-label-code text-label-code text-primary font-bold mb-space-xs">@jokelar_tugas</p>
                   <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
-                    Diskusi santai, sambat revisi dosen pembimbing, giveaway tugas gratis, &amp; promo kilat deadline mepet.
+                    Diskusi, giveaway &amp; promo kilat.
                   </p>
                 </div>
                 <a class="w-full py-space-sm px-space-md bg-surface-container hover:bg-inverse-surface hover:text-inverse-on-surface text-on-surface font-label-badge text-label-badge uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-space-xs" href="https://x.com/JoKelarHub" rel="noopener noreferrer" target="_blank">
@@ -155,19 +155,17 @@ export function render() {
                 <span class="material-symbols-outlined text-2xl">lock</span>
               </div>
               <div class="flex flex-col">
-                <h4 class="font-headline-sm text-headline-sm text-on-surface">Protokol Keamanan &amp; Kerahasiaan Mahasiswa</h4>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">
-                  Semua dokumen, identitas NIM, nama kampus, dan file lampiran otomatis di-enkripsi dan dimusnahkan secara berkala setelah masa garansi revisi berakhir.
-                </p>
+                <h4 class="font-headline-sm text-headline-sm text-on-surface">Keamanan &amp; Kerahasiaan</h4>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Dokumen &amp; identitas di-enkripsi, otomatis dihapus setelah garansi.</p>
               </div>
             </div>
             
             <!-- Visual Mini Showcase / Mascot Banner -->
             <div class="bg-surface-container-low rounded-xl p-space-lg flex items-center justify-between gap-space-md">
               <div class="flex flex-col max-w-sm">
-                <span class="font-label-badge text-label-badge text-primary uppercase font-bold">Motto Kerja JoKelar</span>
-                <h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">"Membantu dan Membuat Pekerjaan Kelar Tepat Waktu."</h3>
-                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Didukung lebih dari 150+ master &amp; sarjana terpilih dari universitas top Indonesia.</p>
+                <span class="font-label-badge text-label-badge text-primary uppercase font-bold">Motto JoKelar</span>
+                <h3 class="font-headline-md text-headline-md text-on-surface tracking-tight">"Kelar Tepat Waktu."</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">150+ mitra ahli dari universitas top Indonesia.</p>
               </div>
               <div class="hidden md:flex w-28 h-28 rounded-xl bg-surface-container-lowest p-2 shadow-sm flex-col items-center justify-center text-center">
                 <span class="material-symbols-outlined text-4xl text-primary mb-1">sentiment_satisfied</span>
@@ -277,7 +275,7 @@ export function render() {
                 <span>Kirim Brief ke WhatsApp</span>
               </button>
               <p class="font-label-code text-label-code text-center text-on-surface-variant text-[11px]">
-                Format pesan otomatis terisi rapi di WhatsApp. Tim langsung membalas dalam hitungan menit.
+                Pesan otomatis terisi rapi. Tim langsung membalas.
               </p>
             </form>
           </div>
@@ -289,12 +287,12 @@ export function render() {
             <span class="font-label-badge text-label-badge uppercase bg-surface-container px-space-sm py-1 rounded-full text-primary font-bold">Transparan &amp; Terpercaya</span>
             <h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">Alur Cepat Pengerjaan di JoKelar</h2>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-space-md">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-10">
             <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between reveal reveal-delay-1">
               <div>
                 <div class="w-9 h-9 rounded-lg bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center justify-center font-bold mb-space-sm">1</div>
                 <h4 class="font-headline-sm text-headline-sm text-on-surface mb-1">Kirim Materi</h4>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">Hubungi WhatsApp admin &amp; lampirkan brief tugas serta tanggal deadline.</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Kirim brief &amp; deadline via WhatsApp.</p>
               </div>
               <span class="font-label-code text-label-code text-primary mt-space-sm">Step 01 • Estimasi</span>
             </div>
@@ -302,7 +300,7 @@ export function render() {
               <div>
                 <div class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-headline-sm text-headline-sm flex items-center justify-center font-bold mb-space-sm">2</div>
                 <h4 class="font-headline-sm text-headline-sm text-on-surface mb-1">Deal &amp; DP Aman</h4>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">Dapatkan estimasi biaya transparan. Pembayaran aman via QRIS, BCA, Mandiri, atau E-Wallet.</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Harga transparan, bayar aman via QRIS/transfer.</p>
               </div>
               <span class="font-label-code text-label-code text-on-surface-variant mt-space-sm">Step 02 • Verifikasi</span>
             </div>
@@ -310,7 +308,7 @@ export function render() {
               <div>
                 <div class="w-9 h-9 rounded-lg bg-surface-container text-on-surface font-headline-sm text-headline-sm flex items-center justify-center font-bold mb-space-sm">3</div>
                 <h4 class="font-headline-sm text-headline-sm text-on-surface mb-1">Proses Pengerjaan</h4>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">Tugas dikerjakan spesialis bidangnya. Laporan progres berkala bisa dipantau langsung.</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Dikerjakan spesialis, progres bisa dipantau.</p>
               </div>
               <span class="font-label-code text-label-code text-on-surface-variant mt-space-sm">Step 03 • Eksekusi</span>
             </div>
@@ -318,7 +316,7 @@ export function render() {
               <div>
                 <div class="w-9 h-9 rounded-lg bg-secondary-container text-on-secondary-fixed font-headline-sm text-headline-sm flex items-center justify-center font-bold mb-space-sm">4</div>
                 <h4 class="font-headline-sm text-headline-sm text-on-surface mb-1">Terima &amp; Garansi</h4>
-                <p class="font-body-sm text-body-sm text-on-surface-variant">File selesai tepat waktu berserta report turnitin. Tersedia garansi revisi gratis sampai fix.</p>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Hasil tepat waktu + garansi revisi gratis.</p>
               </div>
               <span class="font-label-code text-label-code text-on-secondary-fixed font-bold mt-space-sm">Step 04 • Beres</span>
             </div>

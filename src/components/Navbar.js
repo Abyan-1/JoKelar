@@ -3,6 +3,7 @@
  * Renders the fixed top navigation bar with active state and mobile menu.
  */
 import { getCurrentRoute } from '../router.js';
+import logoSrc from '../assets/logo.jpeg';
 
 /**
  * Render the navbar HTML.
@@ -45,7 +46,7 @@ export function renderNavbar() {
         <div class="flex items-center gap-space-lg">
           <!-- Logo -->
           <a class="flex items-center gap-space-sm group" data-path="beranda" href="#beranda">
-            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-on-primary font-headline-sm text-headline-sm font-extrabold">JK</div>
+            <img src="${logoSrc}" alt="JoKelar Logo" class="h-10 w-auto rounded-lg object-contain" />
             <div class="flex flex-col">
               <span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none group-hover:text-primary transition-colors">JoKelar</span>
               <span class="font-label-code text-label-code text-on-surface-variant font-medium">Solusi Tugas #1</span>
