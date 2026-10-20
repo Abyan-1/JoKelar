@@ -9,7 +9,7 @@
  * - Ubah array `activeFounders` di file `src/data/databaseTemplates.js`, ATAU
  * - Sambungkan fetch API/database di sini dan passing datanya ke `renderFounderCard`.
  * ==============================================================================
- * tambahkan foto pendiri masing masing
+ * tambahkan foto pendiri masing masing di data base
 */ 
 
 import { activeFounders } from '../data/databaseTemplates.js';
