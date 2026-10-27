@@ -1,4 +1,8 @@
+import { inject } from '@vercel/analytics';
 import './style.css';
+
+// Initialize Vercel Web Analytics
+inject();
 
 import { addRoute, startRouter, onNavigate } from './router.js';
 import { renderNavbar, initNavbar, updateNavbarActive } from './components/Navbar.js';
