@@ -16,24 +16,23 @@ import * as Pendiri from './pages/Pendiri.js';
 import * as Kontak from './pages/Kontak.js';
 
 /**
- * Initialize the JoKelar Application
+ * Initialize the JoKelar Application Shell
  */
 function initApp() {
   const app = document.getElementById('app');
   
   if (!app) return;
 
-  // Render static app shell (Navbar + Content Container + Footer)
+  // Mount Application Shell: Glass Floating Navbar + Main Viewport Container + Bento Footer
   app.innerHTML = `
     ${renderNavbar()}
-    <!-- Main offset for fixed navbar -->
-    <main id="page-content" class="flex-grow pt-20 min-h-screen flex flex-col items-center overflow-x-hidden w-full relative">
-      <!-- Router will inject page content here -->
+    <main id="page-content" class="flex-grow pt-24 sm:pt-28 min-h-screen flex flex-col items-center overflow-x-hidden w-full relative z-10">
+      <!-- Dynamic Pages will be injected here via Vanilla Router -->
     </main>
     ${renderFooter()}
   `;
 
-  // Initialize Navbar JS (mobile menu)
+  // Initialize Navbar interactive behavior (mobile menu)
   initNavbar();
 
   // Register Routes
@@ -45,14 +44,18 @@ function initApp() {
   addRoute('pendiri', Pendiri);
   addRoute('kontak', Kontak);
 
-  // Bind Navbar active state update to router
+  // Synchronize Navbar active state on route changes
   onNavigate((path) => {
     updateNavbarActive(path);
   });
 
-  // Start Router
+  // Start Hash Router & Scroll Trigger Engine
   startRouter();
 }
 
-// Bootstrap
-document.addEventListener('DOMContentLoaded', initApp);
+// Bootstrap on DOM Content Loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}

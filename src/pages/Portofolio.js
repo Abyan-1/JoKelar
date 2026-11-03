@@ -1,94 +1,81 @@
 /**
  * JoKelar — Halaman Portofolio (Portofolio.js)
- * Portofolio tugas & proyek yang telah dikerjakan oleh tim JoKelar.
- * Minimalis, modern, dan informatif.
+ * Clean White Asymmetric Bento Showcase with High-Contrast Modal & Filter
  */
 
 import { activeCatalogItems } from '../data/databaseTemplates.js';
 
-/**
- * Render satu card item portofolio
- * @param {import('../data/databaseTemplates.js').CatalogItem} item 
- * @returns {string}
- */
 export function renderPortfolioCard(item) {
   return `
     <article 
-      class="portfolio-item group flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-primary/40 hover:shadow-lg transition-all duration-300 cursor-pointer" 
+      class="portfolio-card group relative rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_35px_-10px_rgba(0,55,176,0.12)] hover:border-blue-300 p-5 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-1.5 cursor-pointer overflow-hidden" 
       data-category="${item.category || 'umum'}"
       data-id="${item.id}"
       tabindex="0"
       role="button"
       aria-label="Lihat portofolio ${item.title || 'tugas'}"
     >
-      <div class="relative h-44 w-full overflow-hidden bg-surface-container-low">
-        <img 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-          src="${item.image || ''}" 
-          alt="${item.alt || item.title || 'Portofolio'}"
-          loading="lazy"
-          onerror="this.src='https://placehold.co/600x400/e9edff/0037b0?text=${encodeURIComponent(item.subject || 'JoKelar')}';"
-        />
-        <span class="absolute top-3 left-3 px-2.5 py-1 bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-badge text-xs rounded-lg shadow-xs">
-          ${item.categoryLabel || item.category || 'Tugas'}
-        </span>
-        ${item.statLabel ? `
-          <span class="absolute bottom-3 right-3 px-2 py-0.5 bg-primary text-on-primary font-label-code text-xs rounded-md shadow-xs">
-            ${item.statLabel}
+      <div class="flex flex-col gap-4">
+        <!-- Thumbnail Container -->
+        <div class="relative h-48 w-full rounded-2xl overflow-hidden bg-slate-100">
+          <img 
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+            src="${item.image || ''}" 
+            alt="${item.alt || item.title || 'Portofolio'}"
+            loading="lazy"
+            onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80';"
+          />
+          
+          <span class="absolute top-3 left-3 px-3 py-1 bg-white/95 backdrop-blur-md text-slate-900 font-mono text-[11px] font-bold rounded-full border border-slate-200 shadow-xs">
+            ${item.categoryLabel || item.category || 'Akademik'}
           </span>
-        ` : ''}
-      </div>
-      <div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
-        <div>
-          <span class="font-label-code text-xs text-primary font-semibold uppercase tracking-wider">
-            ${item.subject || 'Akademik'}
-          </span>
-          <h3 class="font-headline-sm text-base md:text-lg text-on-surface group-hover:text-primary transition-colors line-clamp-2 mt-1 font-bold">
+
+          ${
+            item.statLabel
+              ? `<span class="absolute bottom-3 right-3 px-2.5 py-1 bg-[#fed01b] text-slate-950 font-mono text-[11px] font-black rounded-lg shadow-xs border border-amber-300">
+                  ${item.statLabel}
+                </span>`
+              : ''
+          }
+        </div>
+
+        <!-- Meta & Title -->
+        <div class="flex flex-col gap-1.5">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-xs text-blue-700 font-bold uppercase tracking-wider">
+              ${item.subject || 'Proyek Akademik'}
+            </span>
+            <span class="font-mono text-[11px] text-amber-700 font-extrabold">
+              ${item.grade || 'Nilai A'}
+            </span>
+          </div>
+
+          <h3 class="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors line-clamp-2">
             ${item.title || 'Judul Portofolio'}
           </h3>
-          ${item.brief ? `
-            <p class="font-body-sm text-xs text-on-surface-variant line-clamp-2 mt-1.5">
-              ${item.brief}
-            </p>
-          ` : ''}
+
+          ${
+            item.brief
+              ? `<p class="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                  ${item.brief}
+                </p>`
+              : ''
+          }
         </div>
-        <div class="flex items-center justify-between font-label-code text-xs text-on-surface-variant pt-space-xs border-t border-surface-container-low mt-2">
-          <span class="text-on-surface-variant/80">${item.duration || 'Tepat Waktu'}</span>
-          <span class="text-primary font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-            <span>Detail</span>
-            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </span>
-        </div>
+      </div>
+
+      <!-- Bottom Card Action -->
+      <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between font-mono text-xs text-slate-500">
+        <span class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-sm text-slate-400">schedule</span>
+          <span>${item.duration || 'Tepat Waktu'}</span>
+        </span>
+        <span class="text-blue-700 font-bold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+          <span>Detail Proyek</span>
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </span>
       </div>
     </article>
-  `;
-}
-
-/**
- * State kosong jika portofolio belum ada
- */
-function renderEmptyPortfolioState() {
-  return `
-    <div class="col-span-full py-space-xl px-space-lg bg-surface-container-low rounded-2xl border border-dashed border-outline-variant/60 text-center flex flex-col items-center justify-center gap-space-sm my-space-md">
-      <div class="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center text-primary">
-        <span class="material-symbols-outlined text-3xl">folder_open</span>
-      </div>
-      <h3 class="font-headline-sm text-lg text-on-surface font-bold">
-        Portofolio Sedang Diperbarui
-      </h3>
-      <p class="font-body-sm text-sm text-on-surface-variant max-w-md">
-        Dokumentasi pengerjaan sedang dirapikan demi menjaga privasi klien. Anda tetap dapat langsung mengajukan kebutuhan tugas via WhatsApp admin.
-      </p>
-      <a 
-        href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." 
-        target="_blank" 
-        rel="noopener noreferrer"
-        class="mt-2 inline-flex items-center gap-1.5 px-space-md py-2 bg-primary text-on-primary rounded-xl font-body-sm text-sm font-semibold hover:bg-primary-container transition-all"
-      >
-        <span class="material-symbols-outlined text-base">chat</span>
-        <span>Konsultasi Tugas</span>
-      </a>
-    </div>
   `;
 }
 
@@ -96,130 +83,69 @@ export function render() {
   const hasData = Array.isArray(activeCatalogItems) && activeCatalogItems.length > 0;
 
   return `
-    <div class="flex flex-col w-full">
-      <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin pt-space-lg pb-space-xl">
-        
-        <!-- Header Minimalis -->
-        <div class="text-center max-w-2xl mx-auto mb-space-lg flex flex-col items-center gap-space-xs">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full">
-            <span class="w-2 h-2 rounded-full bg-primary"></span>
-            <span class="font-label-badge text-xs uppercase text-primary font-bold tracking-wider">Hasil Pengerjaan</span>
+    <div class="w-full flex flex-col items-center">
+      
+      <!-- HERO HEADER -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-12 md:py-16">
+        <div class="flex flex-col items-center text-center gap-4 max-w-3xl mx-auto reveal">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-blue-700">Showcase Hasil Kerja</span>
           </div>
-          <h1 class="font-headline-lg text-2xl md:text-3xl text-on-surface tracking-tight font-extrabold">
-            Portofolio JoKelar
+
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+            Bukti Kualitas, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-600">Bukan Sekadar Janji.</span>
           </h1>
-          <p class="font-body-sm text-sm text-on-surface-variant max-w-md">
-            Dokumentasi tugas, skripsi, olah data, dan aplikasi yang telah sukses dikerjakan dengan standar mutu terjamin.
+
+          <p class="text-sm sm:text-base text-slate-600 max-w-xl leading-relaxed">
+            Eksplorasi arsip pengerjaan tugas kuliah, skripsi, olah data statistik, dan implementasi kode yang telah berhasil membantu mahasiswa meraih nilai A.
           </p>
-        </div>
 
-        <!-- Filter & Search Bar -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-lg">
-          <div class="flex flex-wrap items-center gap-1.5" id="portfolioFilterContainer">
-            <button class="portfolio-filter-tab px-3.5 py-1.5 rounded-xl font-label-badge text-xs transition-all bg-primary text-on-primary shadow-xs" data-target="all">
-              Semua
+          <!-- Filter Pills -->
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-4" id="portfolio-filters">
+            <button data-filter="all" class="filter-pill active px-4 py-2 rounded-full text-xs font-mono font-bold bg-[#0037b0] text-white border border-blue-700 shadow-xs transition-all">
+              Semua Tugas
             </button>
-            <button class="portfolio-filter-tab px-3.5 py-1.5 rounded-xl font-label-badge text-xs transition-all text-on-surface-variant hover:text-on-surface bg-surface-container-low" data-target="mahasiswa">
-              Mahasiswa
+            <button data-filter="mahasiswa" class="filter-pill px-4 py-2 rounded-full text-xs font-mono font-semibold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 shadow-xs hover:border-slate-300 transition-all">
+              Skripsi &amp; Riset
             </button>
-            <button class="portfolio-filter-tab px-3.5 py-1.5 rounded-xl font-label-badge text-xs transition-all text-on-surface-variant hover:text-on-surface bg-surface-container-low" data-target="pelajar">
-              Pelajar
+            <button data-filter="coding" class="filter-pill px-4 py-2 rounded-full text-xs font-mono font-semibold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 shadow-xs hover:border-slate-300 transition-all">
+              Web &amp; Software
             </button>
-            <button class="portfolio-filter-tab px-3.5 py-1.5 rounded-xl font-label-badge text-xs transition-all text-on-surface-variant hover:text-on-surface bg-surface-container-low" data-target="umum">
-              Umum / Pro
+            <button data-filter="data" class="filter-pill px-4 py-2 rounded-full text-xs font-mono font-semibold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 shadow-xs hover:border-slate-300 transition-all">
+              Olah Data SPSS
             </button>
           </div>
-          <div class="relative w-full sm:w-60">
-            <input 
-              class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-xs px-3 py-2 pl-8 rounded-xl border border-transparent focus:border-primary/30 focus:bg-surface-container-lowest outline-none transition-all" 
-              id="portfolioSearchInput" 
-              placeholder="Cari topik tugas..." 
-              type="text"
-            />
-            <span class="material-symbols-outlined absolute left-2.5 top-2 text-on-surface-variant text-base">search</span>
-          </div>
         </div>
+      </section>
 
-        <!-- Grid Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-md" id="portfolioGrid">
+      <!-- PORTFOLIO GRID: ASYMMETRIC BENTO -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-24">
+        <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           ${
             hasData
               ? activeCatalogItems.map(renderPortfolioCard).join('')
-              : renderEmptyPortfolioState()
+              : `
+                <div class="col-span-full py-16 px-6 rounded-3xl bg-white border border-dashed border-slate-300 text-center flex flex-col items-center justify-center gap-4 shadow-xs">
+                  <div class="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-700">
+                    <span class="material-symbols-outlined text-2xl">folder_open</span>
+                  </div>
+                  <h3 class="text-lg font-bold text-slate-900">Arsip Portofolio Sedang Diperbarui</h3>
+                  <p class="text-xs text-slate-500 max-w-md">Dokumentasi hasil pengerjaan sedang dirapikan demi menjaga kerahasiaan identitas klien.</p>
+                </div>
+              `
           }
         </div>
+      </section>
 
-        <!-- Search Not Found -->
-        <div class="hidden flex-col items-center justify-center p-space-lg bg-surface-container rounded-2xl text-center my-space-md" id="portfolioEmptyNotice">
-          <span class="material-symbols-outlined text-3xl text-on-surface-variant mb-1">search_off</span>
-          <h4 class="font-headline-sm text-base text-on-surface font-bold">Portofolio tidak ditemukan</h4>
-          <p class="font-body-sm text-xs text-on-surface-variant mt-1">Coba gunakan kata kunci lain atau pilih tab 'Semua'.</p>
-        </div>
-
-        <!-- Bottom Banner Minimalis -->
-        <div class="mt-space-xl p-space-lg bg-surface-container-low rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-space-md border border-outline-variant/30">
-          <div>
-            <h3 class="font-headline-sm text-lg text-on-surface font-bold">Punya tugas serupa yang ingin dikerjakan?</h3>
-            <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Diskusikan panduan, rubrik, atau tenggat waktu tugas Anda secara langsung.</p>
-          </div>
-          <a class="whitespace-nowrap inline-flex items-center gap-1.5 px-space-md py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all" href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." rel="noopener noreferrer" target="_blank">
-            <span class="material-symbols-outlined text-base">chat</span>
-            <span>Konsultasi Gratis</span>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Detail Modal -->
-      <div class="fixed inset-0 z-50 hidden bg-inverse-surface/60 backdrop-blur-xs flex items-center justify-center p-space-md transition-opacity duration-300" id="portfolioModal">
-        <div class="relative w-full max-w-2xl max-h-[90vh] bg-surface-container-lowest rounded-2xl shadow-2xl overflow-y-auto flex flex-col border border-outline-variant/40">
-          
-          <div class="sticky top-0 z-20 flex items-center justify-between p-space-md bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-low">
-            <div class="flex items-center gap-space-xs">
-              <span class="px-2.5 py-0.5 rounded-md font-label-badge text-xs bg-primary text-on-primary" id="portModalCategory">Kategori</span>
-              <span class="px-2.5 py-0.5 rounded-md font-label-code text-xs bg-surface-container text-primary font-bold" id="portModalGrade">Grade</span>
-            </div>
-            <button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors" id="closePortModalBtn" aria-label="Tutup modal">
-              <span class="material-symbols-outlined text-lg">close</span>
-            </button>
-          </div>
-
-          <div class="p-space-md md:p-space-lg flex flex-col gap-space-md">
-            <div>
-              <h2 class="font-headline-sm text-xl text-on-surface font-extrabold" id="portModalTitle">Judul Tugas</h2>
-              <div class="flex flex-wrap items-center gap-space-sm text-on-surface-variant font-label-code text-xs mt-1">
-                <span>Waktu: <b class="text-on-surface" id="portModalDuration">-</b></span>
-                <span>•</span>
-                <span>Turnitin: <b class="text-on-surface" id="portModalTurnitin">-</b></span>
-                <span>•</span>
-                <span>Status: <b class="text-primary" id="portModalStatus">Terverifikasi</b></span>
-              </div>
-            </div>
-
-            <div class="bg-surface-container-low p-space-sm rounded-xl">
-              <h4 class="font-headline-sm text-xs font-bold uppercase tracking-wider text-primary mb-1">Brief Tugas</h4>
-              <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed" id="portModalBrief">-</p>
-            </div>
-
-            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high">
-              <h4 class="font-headline-sm text-xs font-bold uppercase tracking-wider text-on-surface mb-1">Solusi &amp; Pengerjaan</h4>
-              <ul class="font-body-sm text-xs text-on-surface-variant list-disc pl-4 space-y-1" id="portModalSolutions">
-                <li>-</li>
-              </ul>
-            </div>
-
-            <div class="bg-surface-container-low p-space-sm rounded-xl">
-              <h4 class="font-headline-sm text-xs font-bold uppercase tracking-wider text-secondary-container mb-1">Ulasan Klien</h4>
-              <p class="font-body-sm text-xs text-on-surface italic leading-relaxed" id="portModalFeedback">-</p>
-              <div class="mt-1 font-label-code text-xs text-on-surface-variant" id="portModalClient">-</div>
-            </div>
-
-            <a id="portModalWhatsAppBtn" class="w-full py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-1.5" href="https://wa.me/6285150754258" rel="noopener noreferrer" target="_blank">
-              <span class="material-symbols-outlined text-base">chat</span>
-              <span>Pesan Tugas Serupa via WhatsApp</span>
-            </a>
-          </div>
-
+      <!-- MODAL DETAIL CONTAINER (Clean White Modal) -->
+      <div id="portfolio-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/40 backdrop-blur-md transition-all">
+        <div id="portfolio-modal-box" class="relative w-full max-w-2xl rounded-3xl bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 flex flex-col gap-6 max-h-[90vh] overflow-y-auto">
+          <!-- Close button -->
+          <button id="modal-close-btn" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-200 flex items-center justify-center text-slate-700 hover:text-slate-900 transition-all">
+            <span class="material-symbols-outlined text-lg">close</span>
+          </button>
+          <div id="modal-content-slot" class="flex flex-col gap-4"></div>
         </div>
       </div>
 
@@ -228,137 +154,97 @@ export function render() {
 }
 
 export function init() {
-  const modal = document.getElementById('portfolioModal');
-  const closeBtn = document.getElementById('closePortModalBtn');
-  const searchInput = document.getElementById('portfolioSearchInput');
-  const filterTabs = document.querySelectorAll('.portfolio-filter-tab');
-  const emptyNotice = document.getElementById('portfolioEmptyNotice');
-  const grid = document.getElementById('portfolioGrid');
+  const filterBtns = document.querySelectorAll('#portfolio-filters .filter-pill');
+  const cards = document.querySelectorAll('.portfolio-card');
+  const modal = document.getElementById('portfolio-modal');
+  const modalSlot = document.getElementById('modal-content-slot');
+  const modalClose = document.getElementById('modal-close-btn');
 
-  function openModal(item) {
-    if (!item) return;
-    document.getElementById('portModalCategory').textContent = item.categoryLabel || item.category || 'Tugas';
-    document.getElementById('portModalGrade').textContent = item.grade || 'Grade A';
-    document.getElementById('portModalTitle').textContent = item.title || '';
-    document.getElementById('portModalDuration').textContent = item.duration || '-';
-    document.getElementById('portModalTurnitin').textContent = item.turnitin || '-';
-    document.getElementById('portModalStatus').textContent = item.statusText || 'Terverifikasi';
-    document.getElementById('portModalBrief').textContent = item.brief || 'Instruksi pengerjaan tugas.';
-    document.getElementById('portModalFeedback').textContent = item.feedback ? `"${item.feedback}"` : 'Hasil memuaskan dan tepat waktu.';
-    document.getElementById('portModalClient').textContent = item.client || 'Mahasiswa Terverifikasi';
+  // Filter Logic
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
 
-    const solEl = document.getElementById('portModalSolutions');
-    solEl.innerHTML = '';
-    if (Array.isArray(item.solutions) && item.solutions.length > 0) {
-      item.solutions.forEach((s) => {
-        const li = document.createElement('li');
-        li.textContent = s;
-        solEl.appendChild(li);
+      filterBtns.forEach((b) => {
+        b.className = 'filter-pill px-4 py-2 rounded-full text-xs font-mono font-semibold text-slate-700 hover:text-slate-900 bg-white border border-slate-200 shadow-xs hover:border-slate-300 transition-all';
       });
-    } else {
-      const li = document.createElement('li');
-      li.textContent = 'Dikerjakan teliti sesuai rubrik penilaian akademis.';
-      solEl.appendChild(li);
-    }
+      btn.className = 'filter-pill active px-4 py-2 rounded-full text-xs font-mono font-bold bg-[#0037b0] text-white border border-blue-700 shadow-xs transition-all';
 
-    if (modal) {
-      const waBtn = document.getElementById('portModalWhatsAppBtn');
-      if (waBtn) {
-        const msg = `Halo Admin JoKelar, saya tertarik dengan pengerjaan portofolio:\n\n📌 *Referensi*: ${item.title}\n📚 *Bidang*: ${item.subject || '-'} (${item.categoryLabel || item.category || 'Akademik'})\n⭐ *Hasil*: ${item.grade || 'Nilai A'} • ${item.turnitin || 'Bebas Plagiasi'}\n\nSaya memiliki tugas / proyek serupa dan ingin konsultasi estimasi biaya serta deadline. Terima kasih!`;
-        waBtn.href = `https://wa.me/6285150754258?text=${encodeURIComponent(msg)}`;
+      cards.forEach((card) => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter || (filter === 'coding' && cat === 'mahasiswa')) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Modal Open Logic
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-id');
+      const item = activeCatalogItems.find((i) => i.id === id);
+
+      if (item && modal && modalSlot) {
+        modalSlot.innerHTML = `
+          <div class="flex flex-col gap-3">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-bold">${item.subject || 'Proyek'}</span>
+              <span class="text-xs font-mono text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full font-extrabold">${item.grade || 'Grade A'}</span>
+            </div>
+            <h3 class="text-2xl font-black text-slate-900">${item.title}</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">${item.brief || ''}</p>
+          </div>
+
+          <div class="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 max-h-64">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover" />
+          </div>
+
+          <div class="flex flex-col gap-2 pt-2 border-t border-slate-100">
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-900">Poin Solusi Dikerjakan:</span>
+            <ul class="flex flex-col gap-2 text-xs text-slate-700">
+              ${(item.solutions || [])
+                .map((sol) => `<li class="flex items-start gap-2"><span class="material-symbols-outlined text-sm text-emerald-600 shrink-0 font-bold">check</span><span>${sol}</span></li>`)
+                .join('')}
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col gap-1">
+            <span class="text-xs text-slate-700 italic">"${item.feedback || 'Pengerjaan memuaskan & lulus tepat waktu.'}"</span>
+            <span class="text-[11px] font-mono text-blue-700 font-bold mt-1">${item.client || 'Klien Terverifikasi'}</span>
+          </div>
+
+          <a 
+            href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20tugas%20seperti%20proyek%20${encodeURIComponent(item.title)}."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 px-4 rounded-xl bg-[#0037b0] hover:bg-blue-800 text-white font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all shadow-md"
+          >
+            <span class="material-symbols-outlined text-base">forum</span>
+            <span>Konsultasi Tugas Serupa via WA</span>
+          </a>
+        `;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
       }
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-  }
+    });
+  });
 
-  function closeModal() {
-    if (modal) {
+  // Modal Close Logic
+  if (modalClose && modal) {
+    modalClose.addEventListener('click', () => {
       modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-  }
+      modal.classList.remove('flex');
+    });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (modal) {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  // Filter tabs
-  filterTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-target');
-      filterTabs.forEach((t) => {
-        t.classList.remove('bg-primary', 'text-on-primary', 'shadow-xs');
-        t.classList.add('text-on-surface-variant', 'bg-surface-container-low');
-      });
-      tab.classList.add('bg-primary', 'text-on-primary', 'shadow-xs');
-      tab.classList.remove('text-on-surface-variant', 'bg-surface-container-low');
-
-      const items = document.querySelectorAll('.portfolio-item');
-      let visible = 0;
-      items.forEach((item) => {
-        const cat = item.getAttribute('data-category');
-        if (target === 'all' || cat === target) {
-          item.style.display = 'flex';
-          visible++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (items.length > 0 && visible === 0 && emptyNotice) {
-        emptyNotice.classList.remove('hidden');
-        emptyNotice.classList.add('flex');
-      } else if (emptyNotice) {
-        emptyNotice.classList.add('hidden');
-        emptyNotice.classList.remove('flex');
-      }
-    });
-  });
-
-  // Search
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase().trim();
-      const items = document.querySelectorAll('.portfolio-item');
-      let visible = 0;
-      items.forEach((item) => {
-        const text = item.innerText.toLowerCase();
-        if (text.includes(query)) {
-          item.style.display = 'flex';
-          visible++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (items.length > 0 && visible === 0 && emptyNotice) {
-        emptyNotice.classList.remove('hidden');
-        emptyNotice.classList.add('flex');
-      } else if (emptyNotice) {
-        emptyNotice.classList.add('hidden');
-        emptyNotice.classList.remove('flex');
-      }
-    });
-  }
-
-  // Delegated click
-  if (grid) {
-    grid.addEventListener('click', (e) => {
-      const card = e.target.closest('.portfolio-item');
-      if (card) {
-        const id = card.getAttribute('data-id');
-        const item = activeCatalogItems.find((i) => String(i.id) === String(id));
-        if (item) openModal(item);
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
       }
     });
   }
 }
-

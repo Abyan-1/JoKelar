@@ -1,7 +1,6 @@
 /**
- * JoKelar — Halaman Catalog (Katalog.js)
- * Catalog 2026: Task Assistance & Digital Services.
- * Minimalis, modern, dan terstruktur.
+ * JoKelar — Halaman Catalog & Pricing (Katalog.js)
+ * Clean White High-Contrast Architecture with Logo Palette (White, Blue, Yellow, Gray, Black)
  */
 
 import coverImg from '../assets/Catalog/Cover.png';
@@ -11,529 +10,621 @@ import bundleImg from '../assets/Catalog/Bundle.png';
 import bundleV2Img from '../assets/Catalog/Bundle-v2.png';
 import workflowImg from '../assets/Catalog/Workflow.png';
 
-// Data Kategori Layanan
+// Service Categories Data
 const serviceCategories = [
   {
-    icon: 'devices',
+    icon: 'code_blocks',
     title: 'Website & Aplikasi',
-    desc: 'Landing page, company profile, web sederhana, dan perbaikan bug.',
-    tag: 'Web Dev'
+    desc: 'Fullstack web, dashboard admin, API endpoint, integrasi database, dan bug fixing.',
+    tag: 'Engineering',
+    accentBg: 'bg-blue-50',
+    accentBorder: 'border-blue-200',
+    accentColor: 'text-blue-700'
   },
   {
-    icon: 'database',
-    title: 'Database & Data',
-    desc: 'Desain database, query SQL, entri & rapikan data, dashboard.',
-    tag: 'Data'
+    icon: 'query_stats',
+    title: 'Statistika & Olah Data',
+    desc: 'SPSS, SmartPLS, SEM-AMOS, EViews, visualisasi grafik, dan interpretasi Bab 4.',
+    tag: 'Data Science',
+    accentBg: 'bg-amber-50',
+    accentBorder: 'border-amber-200',
+    accentColor: 'text-amber-700'
   },
   {
-    icon: 'description',
-    title: 'Laporan & Dokumen',
-    desc: 'Laporan teknis/proyek, dokumentasi sistem, dan panduan pengguna.',
-    tag: 'Dokumen'
+    icon: 'article',
+    title: 'Karya Ilmiah & Skripsi',
+    desc: 'Laporan praktikum, makalah komparatif, proposal skripsi, dan parafrase Turnitin.',
+    tag: 'Academic',
+    accentBg: 'bg-emerald-50',
+    accentBorder: 'border-emerald-200',
+    accentColor: 'text-emerald-700'
   },
   {
-    icon: 'slideshow',
-    title: 'Desain & Presentasi',
-    desc: 'Slide presentasi PPT, poster/banner, dan video pendek kreatif.',
-    tag: 'Desain'
+    icon: 'draw',
+    title: 'Desain UI & Presentasi',
+    desc: 'Slide presentasi PPT interaktif, visual poster ilmiah, dan prototipe Figma.',
+    tag: 'Design',
+    accentBg: 'bg-purple-50',
+    accentBorder: 'border-purple-200',
+    accentColor: 'text-purple-700'
   },
   {
-    icon: 'school',
-    title: 'Pendampingan',
-    desc: 'Konsultasi, review kode/laporan, dan bimbingan belajar coding.',
-    tag: 'Mentoring'
+    icon: 'co_present',
+    title: 'Mentoring 1-on-1',
+    desc: 'Bimbingan persiapan sidang skripsi, telaah rubrik dosen, dan bedah source code.',
+    tag: 'Mentorship',
+    accentBg: 'bg-sky-50',
+    accentBorder: 'border-sky-200',
+    accentColor: 'text-sky-700'
   }
 ];
 
-// Data Paket Mahasiswa
+// Student Tier Packages
 const studentPackages = [
   {
-    level: 'LEVEL 01',
-    name: 'Pemula',
+    level: 'TIER 01',
+    name: 'Starter Academic',
     price: 'Rp 99.000',
-    subtitle: 'Cocok untuk tugas sederhana mahasiswa semester awal',
+    subtitle: 'Cocok untuk tugas mata kuliah mingguan & esai umum semester awal',
     features: [
-      'PPT hingga 15 slide',
-      'Poster / banner pendukung',
-      '1 sesi konsultasi',
-      'Revisi 1x'
+      'Slide presentasi PPT (hingga 15 slide)',
+      'Desain poster / resume visual',
+      'Pengecekan Turnitin resmi',
+      'Garansi revisi materi 1x'
     ],
     highlight: false,
     badge: 'Semester Awal'
   },
   {
-    level: 'LEVEL 02',
-    name: 'Medium',
+    level: 'TIER 02',
+    name: 'Pro Semester Project',
     price: 'Rp 275.000',
-    subtitle: 'Cocok untuk tugas matkul, praktikum, proyek semester',
+    subtitle: 'Rekomendasi utama untuk tugas praktikum, makalah besar, & olah data',
     features: [
-      'Laporan teknis hingga 15 halaman',
-      'PPT pendukung',
-      'Desain database sederhana',
-      '1 sesi mentoring',
-      'Revisi 2x'
+      'Laporan teknis komprehensif (s.d. 18 hal)',
+      'Slide presentasi PPT representatif',
+      'Desain database SQL / olah data dasar',
+      '1 sesi konsultasi bedah materi via WA/GMeet',
+      'Garansi revisi materi 2x hingga tuntas'
     ],
     highlight: true,
     badge: 'Paling Populer'
   },
   {
-    level: 'LEVEL 03',
-    name: 'Lanjutan',
+    level: 'TIER 03',
+    name: 'Advanced Thesis & Dev',
     price: 'Rp 599.000',
-    subtitle: 'Cocok untuk proyek besar yang butuh sistem atau data',
+    subtitle: 'Proyek kompleks skripsi, sistem website aplikasi, atau olah data SEM',
     features: [
-      'Website hingga 3 halaman',
-      'Desain database + 5 query',
-      'Dokumentasi / panduan pengguna',
-      '2 sesi mentoring',
-      'Revisi 2x + garansi bug 7 hari'
+      'Website aplikasi multi-halaman siap pakai',
+      'Relasi database komplit & dokumentasi query',
+      'Buku panduan instalasi & source code beranotasi',
+      '2 sesi pendampingan persiapan sidang',
+      'Garansi bug code 7 hari & garansi revisi'
     ],
     highlight: false,
-    badge: 'Proyek Kompleks'
+    badge: 'Skripsi & Capstone'
   }
 ];
 
-// Data Paket Bundling
+// Bundling Packages
 const bundlingPackages = [
   {
-    code: 'BUNDLING 01',
-    name: 'Mulai Online',
-    price: 'Rp 350.000',
-    desc: 'Untuk yang ingin tampil online dengan cepat.',
-    features: [
-      '1 landing page responsif',
-      '1 desain banner/poster pendukung',
-      'Revisi hingga 2x'
-    ]
+    code: 'BUNDLE-01',
+    name: 'Paket Mulai Online',
+    subtitle: 'Website Profil + Database Terstruktur',
+    price: 'Rp 450.000',
+    savings: 'Hemat 25%',
+    items: ['Web Company / Personal Profile', 'Desain Skema Database SQL', 'Setup Domain/Hosting Gratis', 'Revisi 2x']
   },
   {
-    code: 'BUNDLING 02',
-    name: 'Rapi Dokumen',
-    price: 'Rp 150.000',
-    desc: 'Untuk laporan dan dokumentasi yang siap pakai.',
-    features: [
-      'Penyusunan laporan teknis/proyek (15 hal)',
-      'Template PPT pendukung',
-      'Revisi hingga 2x'
-    ]
-  },
-  {
-    code: 'BUNDLING 03',
-    name: 'Data Beres',
-    price: 'Rp 250.000',
-    desc: 'Untuk data praktikum atau riset yang berantakan.',
-    features: [
-      'Rapikan & input data (500 baris)',
-      'Desain database sederhana + 5 query',
-      'Panduan singkat penggunaan',
-      'Revisi hingga 2x'
-    ]
-  },
-  {
-    code: 'BUNDLING 04',
-    name: 'Paket Lengkap',
-    price: 'Rp 750.000',
-    desc: 'Solusi all-in-one untuk proyek dan usaha kecil.',
-    features: [
-      'Website company profile (hingga 5 hal)',
-      'Dokumentasi & panduan admin',
-      'Desain logo/banner dasar',
-      'Garansi perbaikan bug 7 hari'
-    ]
+    code: 'BUNDLE-02',
+    name: 'Paket Tuntas Sidang',
+    subtitle: 'Dokumen Skripsi + Program + Slide PPT',
+    price: 'Rp 850.000',
+    savings: 'Hemat 35%',
+    items: ['Source Code Program Lengkap', 'Uji Turnitin Bebas Plagiasi', 'PPT Presentasi Dewan Penguji', 'Simulasi Tanya Jawab Sidang']
   }
 ];
 
-// Data Harga Satuan
-const unitPrices = [
-  { service: 'Landing page 1 halaman', price: 'Rp 200.000', cat: 'Web' },
-  { service: 'Website tambahan per halaman', price: 'Rp 50.000', cat: 'Web' },
-  { service: 'Perbaikan bug / perubahan kecil', price: 'Rp 30.000', cat: 'Web' },
-  { service: 'Desain database sederhana', price: 'Rp 100.000', cat: 'Data' },
-  { service: 'Query / laporan data', price: 'Rp 25.000', cat: 'Data' },
-  { service: 'Input & rapikan data', price: 'Rp 20.000', cat: 'Data' },
-  { service: 'Laporan teknis (hingga 10 halaman)', price: 'Rp 100.000', cat: 'Dokumen' },
-  { service: 'Halaman tambahan laporan', price: 'Rp 5.000', cat: 'Dokumen' },
-  { service: 'Dokumentasi sistem / panduan pengguna', price: 'Rp 75.000', cat: 'Dokumen' },
-  { service: 'Presentasi PPT (hingga 15 slide)', price: 'Rp 50.000', cat: 'Desain' },
-  { service: 'Poster / banner', price: 'Rp 30.000', cat: 'Desain' },
-  { service: 'Video pendek (hingga 30 detik)', price: 'Rp 100.000', cat: 'Desain' },
-  { service: 'Konsultasi / mentoring per sesi (60 menit)', price: 'Rp 40.000', cat: 'Mentoring' }
-];
-
-const WA_PHONE = '6285150754258';
-
-function getStudentWaUrl(pkg) {
-  const msg = `Halo Admin JoKelar, saya mau konsultasi & order Paket Mahasiswa:
-
-📦 *Paket*: ${pkg.level} - ${pkg.name}
-💰 *Biaya*: ${pkg.price}
-📋 *Fasilitas*:
-${pkg.features.map(f => `• ${f}`).join('\n')}
-
-📝 *Detail Tugas*:
-• Mata Kuliah / Jurusan: 
-• Topik / Judul: 
-• Deadline: 
-
-Mohon info ketersediaan slot pengerjaan. Terima kasih!`;
-  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
-}
-
-function getBundlingWaUrl(pkg) {
-  const msg = `Halo Admin JoKelar, saya mau konsultasi & order Paket Bundling:
-
-📦 *Paket*: ${pkg.code} - ${pkg.name}
-💰 *Biaya*: ${pkg.price}
-📋 *Cakupan*:
-${pkg.features.map(f => `• ${f}`).join('\n')}
-
-📝 *Detail Kebutuhan*:
-• Deskripsi Tugas / Proyek: 
-• Target Deadline: 
-
-Mohon konfirmasi estimasi dan langkah selanjutnya. Terima kasih!`;
-  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
-}
-
-function getUnitWaUrl(item) {
-  const msg = `Halo Admin JoKelar, saya mau order layanan satuan:
-
-🏷️ *Layanan*: ${item.service}
-📂 *Kategori*: ${item.cat}
-💰 *Harga*: ${item.price}
-
-📝 *Detail Kebutuhan*:
-• Instruksi / Keterangan: 
-• Deadline: 
-
-Mohon dibantu konfirmasi ketersediaan tim. Terima kasih!`;
-  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
-}
-
-// 7 Langkah Alur Pemesanan Resmi (Sesuai gambar lampiran)
-const workflowSteps = [
+// Visual E-Catalog Items
+const visualCatalogItems = [
   {
-    step: '1',
-    title: 'Konsultasi',
-    desc: 'Klien menyampaikan kebutuhan, deadline, dan referensi lewat chat/form.',
-    color: 'bg-primary text-on-primary'
+    id: 'cover',
+    title: 'Cover Catalog 2026',
+    alt: 'Cover E-Catalog JoKelar 2026',
+    src: coverImg,
+    desc: 'Buku panduan resmi layanan asistensi akademik JoKelar edisi 2026'
   },
   {
-    step: '2',
-    title: 'Penawaran & Deal',
-    desc: 'Kami kirim estimasi harga, timeline, dan cakupan kerja. Klien menyetujui S&K.',
-    color: 'bg-primary text-on-primary'
+    id: 'kategori',
+    title: 'Struktur Kategori',
+    alt: 'Kategori Layanan JoKelar',
+    src: kategoriImg,
+    desc: 'Klasifikasi lengkap 5 pilar penugasan: koding, data, skripsi, desain & mentoring'
   },
   {
-    step: '3',
-    title: 'DP 50%',
-    desc: 'Pembayaran awal, lalu pesanan masuk antrean pengerjaan resmi.',
-    color: 'bg-secondary-container text-on-secondary-fixed'
+    id: 'harga',
+    title: 'Matriks Harga',
+    alt: 'Daftar Harga & Tarif Asistensi',
+    src: hargaImg,
+    desc: 'Transparansi estimasi biaya pengerjaan sesuai kompleksitas dan deadline tugas'
   },
   {
-    step: '4',
-    title: 'Pengerjaan',
-    desc: 'Dikerjakan sesuai keahlian tim; jika di luar kapasitas, dialihkan ke mitra terpercaya dengan data terbatas.',
-    color: 'bg-primary text-on-primary'
-  },
-  {
-    step: '5',
-    title: 'Preview & Revisi',
-    desc: 'Klien menerima draft/watermark dan memberi masukan (maks. 2x revisi).',
-    color: 'bg-secondary-container text-on-secondary-fixed'
-  },
-  {
-    step: '6',
-    title: 'Pelunasan & Serah Terima',
-    desc: 'Sisa 50% dibayar, file final/akses dikirim beserta panduan singkat.',
-    color: 'bg-secondary-container text-on-secondary-fixed'
-  },
-  {
-    step: '7',
-    title: 'Follow-up',
-    desc: 'Masa garansi 7 hari, lalu minta testimoni (data disamarkan).',
-    color: 'bg-primary text-on-primary'
+    id: 'workflow',
+    title: 'Alur Standar Mutu',
+    alt: 'Workflow Pengerjaan & Quality Control',
+    src: workflowImg,
+    desc: 'Alur pengerjaan terstruktur: briefing, pengerjaan, QA turnitin, hingga garansi revisi'
   }
 ];
 
 export function render() {
   return `
-    <div class="flex flex-col w-full">
-      <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin pt-space-lg pb-space-xl">
-        
-        <!-- Header Banner Minimalis Modern -->
-        <div class="text-center max-w-2xl mx-auto mb-space-xl flex flex-col items-center gap-space-xs">
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full">
-            <span class="w-2 h-2 rounded-full bg-primary"></span>
-            <span class="font-label-badge text-xs uppercase text-primary font-bold tracking-wider">Catalog 2026</span>
+    <div class="w-full flex flex-col items-center">
+      
+      <!-- HERO HEADER -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-8 pb-12 md:py-16">
+        <div class="flex flex-col items-center text-center gap-4 max-w-3xl mx-auto reveal">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+            <span class="text-xs font-mono font-bold uppercase tracking-wider text-blue-700">Daftar Biaya &amp; Paket 2026</span>
           </div>
-          <h1 class="font-headline-lg text-2xl md:text-4xl text-on-surface tracking-tight font-extrabold">
-            Catalog JoKelar
+
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
+            Tarif Transparan, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-600">Kualitas Tanpa Kompromi.</span>
           </h1>
-          <p class="font-body-sm text-sm text-on-surface-variant max-w-md">
-            Layanan asistensi tugas akademik dan solusi digital terstruktur dengan harga transparan ramah kantong.
+
+          <p class="text-sm sm:text-base text-slate-600 max-w-xl leading-relaxed">
+            Pilih paket asistensi yang disesuaikan dengan tingkat kesulitan tugasmu. Tanpa biaya tersembunyi, dengan transparansi rubrik penilaian.
           </p>
         </div>
+      </section>
 
-        <!-- 5 Kategori Produk & Layanan -->
-        <section class="mb-space-xl">
-          <div class="flex items-center justify-between mb-space-md">
-            <h2 class="font-headline-sm text-lg md:text-xl text-on-surface font-bold">Kategori Produk</h2>
-            <span class="font-label-code text-xs text-on-surface-variant">5 Bidang Keahlian</span>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-sm">
-            ${serviceCategories.map(cat => `
-              <div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 hover:border-primary/50 transition-all flex flex-col justify-between gap-space-sm shadow-xs">
-                <div>
-                  <div class="w-10 h-10 rounded-xl bg-surface-container text-primary flex items-center justify-center mb-space-xs">
+      <!-- 5 SERVICE CATEGORIES: ASYMMETRICAL BENTO -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-16">
+        <div class="flex flex-col gap-2 mb-8">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Bidang Keahlian</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">5 Pilar Cakupan Tugas</h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          ${serviceCategories
+            .map((cat) => `
+              <div class="rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.04)] p-5 flex flex-col justify-between gap-4 hover:border-blue-300 hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-out group">
+                <div class="flex items-center justify-between">
+                  <div class="w-10 h-10 rounded-2xl ${cat.accentBg} border ${cat.accentBorder} flex items-center justify-center ${cat.accentColor} group-hover:bg-[#0037b0] group-hover:text-white transition-colors">
                     <span class="material-symbols-outlined text-xl">${cat.icon}</span>
                   </div>
-                  <span class="font-label-code text-[11px] text-primary font-semibold uppercase tracking-wider">${cat.tag}</span>
-                  <h3 class="font-headline-sm text-sm font-bold text-on-surface mt-0.5">${cat.title}</h3>
-                  <p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">${cat.desc}</p>
+                  <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 font-medium">
+                    ${cat.tag}
+                  </span>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors">${cat.title}</h3>
+                  <p class="text-xs text-slate-600 leading-relaxed">${cat.desc}</p>
                 </div>
               </div>
-            `).join('')}
-          </div>
-        </section>
+            `)
+            .join('')}
+        </div>
+      </section>
 
-        <!-- Pricing Packages Section with Tabs -->
-        <section class="mb-space-xl">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
-            <div>
-              <h2 class="font-headline-sm text-lg md:text-xl text-on-surface font-bold">Paket &amp; Biaya Pengerjaan</h2>
-              <p class="font-body-sm text-xs text-on-surface-variant">Pilih paket siap pakai atau pesan layanan satuan.</p>
+      <!-- PRICING TIERS: BENTO SCALE CARDS -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 border-t border-slate-200">
+        <div class="flex flex-col items-center text-center gap-2 max-w-xl mx-auto mb-14 reveal">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">Tingkat Penugasan</span>
+          <h2 class="text-3xl font-black text-slate-900">Paket Tugas Mahasiswa</h2>
+          <p class="text-xs sm:text-sm text-slate-600">Semua paket dilengkapi jaminan bebas plagiasi dan panduan materi.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          ${studentPackages
+            .map((pkg) => {
+              const isHighlight = pkg.highlight;
+              return `
+                <div class="relative rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.05)] p-7 sm:p-8 flex flex-col justify-between gap-6 hover:border-blue-400 hover:shadow-lg transition-all duration-300">
+                  
+                  ${
+                    isHighlight
+                      ? `<div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#fed01b] text-slate-950 text-xs font-black uppercase tracking-wider shadow-sm border border-amber-300">
+                          ${pkg.badge}
+                        </div>`
+                      : ''
+                  }
+
+                  <div class="flex flex-col gap-4">
+                    <div class="flex items-center justify-between">
+                      <span class="font-mono text-xs uppercase tracking-wider text-slate-500 font-semibold">${pkg.level}</span>
+                      ${
+                        !isHighlight
+                          ? `<span class="font-mono text-[11px] px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 font-medium">${pkg.badge}</span>`
+                          : ''
+                      }
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                      <h3 class="text-2xl font-black text-slate-900">${pkg.name}</h3>
+                      <p class="text-xs text-slate-600 min-h-[32px]">${pkg.subtitle}</p>
+                    </div>
+
+                    <div class="pt-2">
+                      <div class="text-3xl sm:text-4xl font-black text-blue-700">
+                        ${pkg.price}
+                      </div>
+                      <span class="text-[11px] font-mono text-slate-500">Estimasi fleksibel sesuai kompleksitas</span>
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-200/80 flex flex-col gap-2.5">
+                      <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-800">Fasilitas Termasuk:</span>
+                      <ul class="flex flex-col gap-2 text-xs text-slate-700">
+                        ${pkg.features
+                          .map(
+                            (f) => `
+                              <li class="flex items-start gap-2">
+                                <span class="material-symbols-outlined text-base text-blue-600 shrink-0">check_circle</span>
+                                <span>${f}</span>
+                              </li>
+                            `
+                          )
+                          .join('')}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <a 
+                    href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20tertarik%20dengan%20paket%20${encodeURIComponent(pkg.name)}."
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="w-full py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-slate-900 font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all"
+                  >
+                    <span>Pilih Paket Ini</span>
+                    <span class="material-symbols-outlined text-sm">north_east</span>
+                  </a>
+
+                </div>
+              `;
+            })
+            .join('')}
+        </div>
+      </section>
+
+      <!-- BUNDLE SOLUTIONS: 2 ASYMMETRIC BENTO PANELS -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 border-t border-slate-200">
+        <div class="flex flex-col gap-2 mb-10">
+          <span class="text-xs font-mono font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 w-fit">Hemat Hingga 35%</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Paket Bundling Komplit</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          ${bundlingPackages
+            .map((b) => `
+              <div class="rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_25px_-5px_rgba(0,0,0,0.05)] p-7 sm:p-8 flex flex-col justify-between gap-6 hover:border-emerald-400 hover:shadow-lg transition-all duration-300">
+                <div class="flex flex-col gap-4">
+                  <div class="flex items-center justify-between">
+                    <span class="font-mono text-xs text-slate-500 font-semibold">${b.code}</span>
+                    <span class="font-mono text-xs px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold">${b.savings}</span>
+                  </div>
+
+                  <div class="flex flex-col gap-1">
+                    <h3 class="text-2xl font-black text-slate-900">${b.name}</h3>
+                    <p class="text-xs text-slate-600">${b.subtitle}</p>
+                  </div>
+
+                  <div class="text-3xl font-black text-blue-700">
+                    ${b.price}
+                  </div>
+
+                  <div class="pt-3 border-t border-slate-100 flex flex-col gap-2 text-xs text-slate-700">
+                    ${b.items
+                      .map(
+                        (item) => `
+                          <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-emerald-600 text-sm font-bold">check</span>
+                            <span>${item}</span>
+                          </div>
+                        `
+                      )
+                      .join('')}
+                  </div>
+                </div>
+
+                <a 
+                  href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20ambil%20${encodeURIComponent(b.name)}."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-full py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 text-slate-900 font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center gap-2 transition-all"
+                >
+                  <span>Klaim Bundling Ini</span>
+                  <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+              </div>
+            `)
+            .join('')}
+        </div>
+      </section>
+
+      <!-- VISUAL CATALOG GALLERY -->
+      <section class="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 border-t border-slate-200">
+        <div class="flex flex-col gap-2 mb-8">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-slate-500">Dokumentasi Panduan</span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Visual E-Catalog Resmi</h2>
+            <p class="text-xs text-slate-500 font-mono">Klik gambar untuk membuka &amp; melihat resolusi penuh</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+          ${visualCatalogItems
+            .map(
+              (item, idx) => `
+                <div 
+                  class="catalog-img-card group relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-xs hover:border-blue-500 hover:shadow-xl transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 flex flex-col justify-between"
+                  data-index="${idx}"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Buka gambar ${item.title}"
+                >
+                  <div class="relative w-full h-48 sm:h-56 overflow-hidden bg-slate-100 flex items-center justify-center">
+                    <img 
+                      src="${item.src}" 
+                      alt="${item.alt}" 
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      loading="lazy" 
+                    />
+                    <!-- Overlay hint on hover -->
+                    <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-300 flex items-center justify-center p-2">
+                      <div class="px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-sm text-slate-900 text-xs font-mono font-bold flex items-center gap-1.5 shadow-lg transform translate-y-2 group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-300">
+                        <span class="material-symbols-outlined text-base text-blue-700">zoom_in</span>
+                        <span>Buka Gambar</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-3 text-center text-xs font-mono text-slate-700 font-semibold group-hover:text-blue-700 transition-colors flex items-center justify-center gap-1.5 border-t border-slate-100 bg-white">
+                    <span>${item.title}</span>
+                    <span class="material-symbols-outlined text-sm opacity-50 group-hover:opacity-100 transition-opacity">open_in_full</span>
+                  </div>
+                </div>
+              `
+            )
+            .join('')}
+        </div>
+      </section>
+
+      <!-- LIGHTBOX MODAL FOR VISUAL E-CATALOG -->
+      <div 
+        id="catalog-lightbox" 
+        class="fixed inset-0 z-[9999] hidden items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md transition-opacity duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Preview Gambar E-Catalog"
+      >
+        <div 
+          id="catalog-lightbox-box" 
+          class="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col max-h-[92vh] my-auto"
+        >
+          <!-- Header -->
+          <div class="flex items-center justify-between px-5 py-3.5 border-b border-slate-100 bg-white">
+            <div class="flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+              <div>
+                <h3 id="lightbox-title" class="text-sm sm:text-base font-black text-slate-900">Judul Dokumen</h3>
+                <span id="lightbox-counter" class="text-[11px] font-mono text-slate-500 font-medium">Halaman 1 dari 4</span>
+              </div>
             </div>
+            <div class="flex items-center gap-2">
+              <a 
+                id="lightbox-external-link" 
+                href="#" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                title="Buka gambar di tab baru"
+                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-50 hover:text-blue-700 border border-slate-200 text-xs font-mono font-bold text-slate-700 transition-all"
+              >
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span class="hidden sm:inline">Ukuran Penuh</span>
+              </a>
+              <button 
+                id="lightbox-close-btn" 
+                class="w-9 h-9 rounded-full bg-slate-100 hover:bg-rose-50 hover:text-rose-600 hover:border-rose-200 border border-slate-200 flex items-center justify-center text-slate-700 transition-all cursor-pointer"
+                aria-label="Tutup preview gambar"
+              >
+                <span class="material-symbols-outlined text-lg">close</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Image Display with Navigation -->
+          <div class="relative flex-1 bg-slate-950 flex items-center justify-center p-3 sm:p-6 overflow-hidden min-h-[260px] max-h-[70vh]">
+            <img 
+              id="lightbox-img" 
+              src="" 
+              alt="E-Catalog Preview" 
+              class="max-w-full max-h-[66vh] object-contain rounded-xl shadow-2xl select-none transition-all duration-200 block mx-auto cursor-zoom-in"
+              title="Klik untuk membuka resolusi penuh di tab baru"
+            />
             
-            <!-- Tabs -->
-            <div class="inline-flex p-1 bg-surface-container rounded-xl gap-1">
-              <button class="catalog-tab-btn active px-3 py-1.5 rounded-lg font-label-badge text-xs font-bold transition-all bg-surface-container-lowest text-primary shadow-xs" data-target="tab-mahasiswa">
-                Paket Mahasiswa
-              </button>
-              <button class="catalog-tab-btn px-3 py-1.5 rounded-lg font-label-badge text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface" data-target="tab-bundling">
-                Paket Bundling
-              </button>
-              <button class="catalog-tab-btn px-3 py-1.5 rounded-lg font-label-badge text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface" data-target="tab-satuan">
-                Daftar Satuan
-              </button>
-            </div>
-          </div>
-
-          <!-- Tab Content 1: Paket Mahasiswa -->
-          <div id="tab-mahasiswa" class="catalog-tab-content block">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-              ${studentPackages.map(pkg => `
-                <div class="relative bg-surface-container-lowest rounded-2xl p-space-lg flex flex-col justify-between border ${pkg.highlight ? 'border-primary ring-2 ring-primary/20 shadow-md' : 'border-outline-variant/30 shadow-xs'} transition-all">
-                  ${pkg.highlight ? `
-                    <span class="absolute -top-3 right-4 px-2.5 py-0.5 bg-secondary-container text-on-secondary-fixed font-label-badge text-[11px] font-bold rounded-full uppercase tracking-wider">
-                      ${pkg.badge}
-                    </span>
-                  ` : ''}
-                  <div>
-                    <span class="font-label-code text-xs text-primary font-bold">${pkg.level}</span>
-                    <h3 class="font-headline-lg text-xl md:text-2xl font-black text-on-surface uppercase mt-0.5">${pkg.name}</h3>
-                    <div class="mt-2 mb-3">
-                      <span class="font-headline-lg text-2xl font-extrabold text-primary">${pkg.price}</span>
-                    </div>
-                    <p class="font-body-sm text-xs text-on-surface-variant pb-space-sm border-b border-surface-container-low mb-space-sm italic">
-                      ${pkg.subtitle}
-                    </p>
-                    <ul class="space-y-2 mb-space-md">
-                      ${pkg.features.map(f => `
-                        <li class="flex items-center gap-2 font-body-sm text-xs text-on-surface">
-                          <span class="material-symbols-outlined text-primary text-base">check_circle</span>
-                          <span>${f}</span>
-                        </li>
-                      `).join('')}
-                    </ul>
-                  </div>
-                  <a href="${getStudentWaUrl(pkg)}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all ${pkg.highlight ? 'bg-primary text-on-primary hover:bg-primary-container shadow-sm' : 'bg-surface-container hover:bg-surface-container-high text-on-surface'}">
-                    Pilih Paket
-                  </a>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
-          <!-- Tab Content 2: Paket Bundling -->
-          <div id="tab-bundling" class="catalog-tab-content hidden">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
-              ${bundlingPackages.map(pkg => `
-                <div class="bg-surface-container-lowest rounded-2xl p-space-md flex flex-col justify-between border border-outline-variant/30 shadow-xs">
-                  <div>
-                    <span class="font-label-code text-[11px] text-primary font-bold">${pkg.code}</span>
-                    <h3 class="font-headline-sm text-base font-extrabold text-on-surface uppercase mt-0.5">${pkg.name}</h3>
-                    <div class="my-2">
-                      <span class="font-headline-sm text-xl font-extrabold text-primary">${pkg.price}</span>
-                    </div>
-                    <p class="font-body-sm text-xs text-on-surface-variant pb-space-xs border-b border-surface-container-low mb-space-xs">
-                      ${pkg.desc}
-                    </p>
-                    <ul class="space-y-1.5 mb-space-md mt-2">
-                      ${pkg.features.map(f => `
-                        <li class="flex items-start gap-1.5 font-body-sm text-xs text-on-surface">
-                          <span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
-                          <span>${f}</span>
-                        </li>
-                      `).join('')}
-                    </ul>
-                  </div>
-                  <a href="${getBundlingWaUrl(pkg)}" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all">
-                    Pilih Bundling
-                  </a>
-                </div>
-              `).join('')}
-            </div>
-          </div>
-
-          <!-- Tab Content 3: Daftar Satuan -->
-          <div id="tab-satuan" class="catalog-tab-content hidden">
-            <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-xs">
-              <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                  <thead>
-                    <tr class="bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider">
-                      <th class="py-3 px-space-md">Layanan</th>
-                      <th class="py-3 px-space-md">Kategori</th>
-                      <th class="py-3 px-space-md text-right">Harga</th>
-                      <th class="py-3 px-space-md text-center">Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-surface-container-low font-body-sm text-xs text-on-surface">
-                    ${unitPrices.map(item => `
-                      <tr class="hover:bg-surface-container-low/50 transition-colors">
-                        <td class="py-2.5 px-space-md font-medium text-on-surface">${item.service}</td>
-                        <td class="py-2.5 px-space-md text-on-surface-variant">
-                          <span class="px-2 py-0.5 rounded-md bg-surface-container text-primary font-label-code text-[11px] font-semibold">${item.cat}</span>
-                        </td>
-                        <td class="py-2.5 px-space-md text-right font-bold text-primary font-label-code">${item.price}</td>
-                        <td class="py-2.5 px-space-md text-center">
-                          <a href="${getUnitWaUrl(item)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-primary hover:underline font-semibold font-label-badge text-xs">
-                            <span>Pesan</span>
-                            <span class="material-symbols-outlined text-xs">arrow_forward</span>
-                          </a>
-                        </td>
-                      </tr>
-                    `).join('')}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 7-Langkah Workflow Pemesanan (Sesuai Desain Asli) -->
-        <section class="mb-space-xl">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-md">
-            <div>
-              <div class="inline-flex items-center gap-1 font-label-code text-xs text-primary font-bold uppercase tracking-wider">
-                <span class="w-2 h-2 rounded-full bg-primary"></span>
-                <span>Alur Transparan</span>
-              </div>
-              <h2 class="font-headline-sm text-xl md:text-2xl text-on-surface font-black mt-0.5">Workflow Pemesanan</h2>
-            </div>
-            <button id="viewBrochureBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-xs transition-colors self-start sm:self-auto">
-              <span class="material-symbols-outlined text-base">image</span>
-              <span>Lihat Poster Alur</span>
+            <!-- Prev Button -->
+            <button 
+              id="lightbox-prev-btn" 
+              class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-slate-900 shadow-lg border border-slate-200 flex items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer z-10"
+              aria-label="Gambar Sebelumnya"
+            >
+              <span class="material-symbols-outlined text-xl">chevron_left</span>
+            </button>
+            
+            <!-- Next Button -->
+            <button 
+              id="lightbox-next-btn" 
+              class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-slate-900 shadow-lg border border-slate-200 flex items-center justify-center transition-all hover:scale-110 active:scale-95 cursor-pointer z-10"
+              aria-label="Gambar Berikutnya"
+            >
+              <span class="material-symbols-outlined text-xl">chevron_right</span>
             </button>
           </div>
 
-          <!-- 7 Steps List Modern Neo-Brutalist -->
-          <div class="flex flex-col gap-2.5 max-w-3xl mx-auto">
-            ${workflowSteps.map(w => `
-              <div class="flex items-center bg-surface-container-lowest rounded-xl border-2 border-on-surface shadow-[3px_3px_0px_#141b2b] overflow-hidden transition-all hover:translate-x-1">
-                <div class="w-12 sm:w-16 self-stretch ${w.color} flex items-center justify-center font-headline-lg text-lg sm:text-2xl font-black shrink-0 border-r-2 border-on-surface">
-                  ${w.step}
-                </div>
-                <div class="p-3 sm:px-4 flex flex-col justify-center">
-                  <h4 class="font-headline-sm text-sm sm:text-base font-extrabold text-on-surface leading-tight">${w.title}</h4>
-                  <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-0.5">${w.desc}</p>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </section>
-
-        <!-- Gallery Booklet / Asset Modal -->
-        <div id="brochureModal" class="fixed inset-0 z-50 hidden bg-inverse-surface/70 backdrop-blur-xs flex items-center justify-center p-space-md">
-          <div class="relative max-w-xl w-full bg-surface-container-lowest rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/40">
-            <div class="p-3 bg-surface-container flex items-center justify-between">
-              <span class="font-headline-sm text-sm font-bold text-on-surface">Poster Workflow Resmi JoKelar</span>
-              <button id="closeBrochureBtn" class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface hover:bg-surface-container-high">
-                <span class="material-symbols-outlined text-base">close</span>
-              </button>
-            </div>
-            <div class="p-3 max-h-[80vh] overflow-y-auto flex items-center justify-center bg-surface-container-low">
-              <img src="${workflowImg}" alt="Workflow Pemesanan JoKelar" class="w-full h-auto rounded-lg shadow-sm" />
+          <!-- Footer Caption & Shortcuts -->
+          <div class="px-5 py-3 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-600">
+            <span id="lightbox-desc" class="text-center sm:text-left text-slate-700 font-medium">Katalog panduan resmi JoKelar 2026</span>
+            <div class="flex items-center gap-1 font-mono text-[11px] text-slate-500">
+              <kbd class="px-1.5 py-0.5 rounded bg-white border border-slate-300 text-slate-700 shadow-2xs font-semibold">ESC</kbd> tutup
+              <span class="mx-1">•</span>
+              <kbd class="px-1.5 py-0.5 rounded bg-white border border-slate-300 text-slate-700 shadow-2xs font-semibold">←</kbd> <kbd class="px-1.5 py-0.5 rounded bg-white border border-slate-300 text-slate-700 shadow-2xs font-semibold">→</kbd> geser
             </div>
           </div>
         </div>
-
-        <!-- Portofolio Teaser Banner -->
-        <section class="mt-space-lg p-space-md md:p-space-lg bg-surface-container-low rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-space-md border border-outline-variant/30">
-          <div>
-            <span class="font-label-code text-xs text-primary font-bold uppercase tracking-wider">Hasil Pengerjaan Nyata</span>
-            <h3 class="font-headline-sm text-base md:text-lg font-bold text-on-surface mt-0.5">Ingin melihat contoh tugas yang pernah kami kerjakan?</h3>
-            <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Kunjungi halaman Portofolio untuk melihat skor Turnitin, nilai A, dan testimoni mahasiswa.</p>
-          </div>
-          <a class="whitespace-nowrap inline-flex items-center gap-1.5 px-space-md py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all" data-path="portofolio" href="#portofolio">
-            <span>Buka Portofolio</span>
-            <span class="material-symbols-outlined text-sm">east</span>
-          </a>
-        </section>
-
       </div>
+
     </div>
   `;
 }
 
+/**
+ * Initialize Visual E-Catalog Interactive Lightbox
+ */
 export function init() {
-  // Tab switching
-  const tabs = document.querySelectorAll('.catalog-tab-btn');
-  const contents = document.querySelectorAll('.catalog-tab-content');
+  // Clean up any stale lightbox attached to body from previous route visits
+  const staleLightboxes = document.querySelectorAll('#catalog-lightbox');
+  staleLightboxes.forEach((el, index) => {
+    if (index > 0 || el.parentElement === document.body) {
+      el.remove();
+    }
+  });
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.getAttribute('data-target');
+  const cards = document.querySelectorAll('.catalog-img-card');
+  const lightbox = document.getElementById('catalog-lightbox');
+  
+  if (!lightbox || cards.length === 0) return;
 
-      tabs.forEach(t => {
-        t.classList.remove('active', 'bg-surface-container-lowest', 'text-primary', 'shadow-xs');
-        t.classList.add('text-on-surface-variant');
-      });
-      tab.classList.add('active', 'bg-surface-container-lowest', 'text-primary', 'shadow-xs');
-      tab.classList.remove('text-on-surface-variant');
+  // Portal lightbox to document.body so fixed positioning is viewport-relative
+  if (lightbox.parentElement !== document.body) {
+    document.body.appendChild(lightbox);
+  }
 
-      contents.forEach(c => {
-        if (c.id === target) {
-          c.classList.remove('hidden');
-          c.classList.add('block');
-        } else {
-          c.classList.add('hidden');
-          c.classList.remove('block');
-        }
-      });
+  const lightboxBox = document.getElementById('catalog-lightbox-box');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const lightboxExternal = document.getElementById('lightbox-external-link');
+  const closeBtn = document.getElementById('lightbox-close-btn');
+  const prevBtn = document.getElementById('lightbox-prev-btn');
+  const nextBtn = document.getElementById('lightbox-next-btn');
+
+  let currentIndex = 0;
+
+  function updateLightbox(index) {
+    currentIndex = (index + visualCatalogItems.length) % visualCatalogItems.length;
+    const item = visualCatalogItems[currentIndex];
+    if (!item) return;
+
+    if (lightboxImg) {
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.alt;
+    }
+    if (lightboxTitle) lightboxTitle.textContent = item.title;
+    if (lightboxDesc) lightboxDesc.textContent = item.desc;
+    if (lightboxCounter) lightboxCounter.textContent = `Halaman ${currentIndex + 1} dari ${visualCatalogItems.length}`;
+    if (lightboxExternal) lightboxExternal.href = item.src;
+  }
+
+  function openLightbox(index) {
+    updateLightbox(index);
+    if (lightbox.parentElement !== document.body) {
+      document.body.appendChild(lightbox);
+    }
+    lightbox.classList.remove('hidden');
+    lightbox.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    lightbox.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  // Click & Keyboard on gallery cards
+  cards.forEach((card) => {
+    const idx = parseInt(card.getAttribute('data-index') || '0', 10);
+    card.addEventListener('click', () => openLightbox(idx));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(idx);
+      }
     });
   });
 
-  // Modal Poster Alur
-  const viewBtn = document.getElementById('viewBrochureBtn');
-  const modal = document.getElementById('brochureModal');
-  const closeBtn = document.getElementById('closeBrochureBtn');
-
-  if (viewBtn && modal && closeBtn) {
-    viewBtn.addEventListener('click', () => {
-      modal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    });
-    closeBtn.addEventListener('click', () => {
-      modal.classList.add('hidden');
-      document.body.style.overflow = '';
-    });
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.add('hidden');
-        document.body.style.overflow = '';
+  // Clicking image in lightbox opens full size in new tab
+  if (lightboxImg) {
+    lightboxImg.addEventListener('click', () => {
+      const item = visualCatalogItems[currentIndex];
+      if (item && item.src) {
+        window.open(item.src, '_blank');
       }
     });
   }
+
+  // Prev / Next button clicks
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateLightbox(currentIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateLightbox(currentIndex + 1);
+    });
+  }
+
+  // Close button
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+  }
+
+  // Click outside modal box to close
+  lightbox.addEventListener('click', (e) => {
+    if (lightboxBox && !lightboxBox.contains(e.target)) {
+      closeLightbox();
+    }
+  });
+
+  // Keyboard navigation (with singleton reference to avoid duplicates)
+  if (window._catalogKeyHandler) {
+    window.removeEventListener('keydown', window._catalogKeyHandler);
+  }
+  window._catalogKeyHandler = (e) => {
+    const currentLightbox = document.getElementById('catalog-lightbox');
+    if (!currentLightbox || currentLightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') {
+      closeLightbox();
+    } else if (e.key === 'ArrowLeft') {
+      updateLightbox(currentIndex - 1);
+    } else if (e.key === 'ArrowRight') {
+      updateLightbox(currentIndex + 1);
+    }
+  };
+  window.addEventListener('keydown', window._catalogKeyHandler);
+
+  // Clean up on route change
+  window.addEventListener(
+    'hashchange',
+    () => {
+      if (lightbox && lightbox.parentElement === document.body) {
+        lightbox.remove();
+        document.body.style.overflow = '';
+      }
+    },
+    { once: true }
+  );
 }

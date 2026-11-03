@@ -1,15 +1,16 @@
 /**
- * JoKelar — Client-side Hash Router
- * Handles navigation between pages without full page reloads.
+ * JoKelar — Client-side Hash Router & Viewport Animation Engine
+ * Pure Vanilla JavaScript DOM Controller with IntersectionObserver
  */
 
 const routes = {};
 let currentRoute = null;
 let onRouteChange = null;
+let scrollObserver = null;
 
 /**
  * Register a route.
- * @param {string} path - Route name (e.g., 'beranda')
+ * @param {string} path - Route identifier (e.g., 'beranda')
  * @param {{ render: () => string, init?: () => void }} handler
  */
 export function addRoute(path, handler) {
@@ -17,7 +18,7 @@ export function addRoute(path, handler) {
 }
 
 /**
- * Set a callback that fires on every route change.
+ * Register a callback that fires on every route change.
  * @param {(path: string) => void} cb
  */
 export function onNavigate(cb) {
@@ -25,7 +26,7 @@ export function onNavigate(cb) {
 }
 
 /**
- * Navigate to a specific route.
+ * Programmatically navigate to a specific route.
  * @param {string} path
  */
 export function navigateTo(path) {
@@ -37,7 +38,7 @@ export function navigateTo(path) {
 }
 
 /**
- * Get the current active route name.
+ * Get current active route.
  * @returns {string}
  */
 export function getCurrentRoute() {
@@ -45,99 +46,83 @@ export function getCurrentRoute() {
 }
 
 /**
- * Resolve and render the current hash route.
+ * Resolve and render current route based on window location hash.
  */
 function resolveRoute() {
   const hash = window.location.hash.replace('#', '') || 'beranda';
   const route = routes[hash];
 
   if (!route) {
-    // Fallback to beranda if route not found
     window.location.hash = 'beranda';
     return;
   }
 
   currentRoute = hash;
 
-  // Get the page container
   const pageContainer = document.getElementById('page-content');
   if (pageContainer) {
-    pageContainer.innerHTML = `<div class="page-enter">${route.render()}</div>`;
+    // Inject rendered page inside a motion container
+    pageContainer.innerHTML = `<div class="page-enter w-full flex flex-col items-center">${route.render()}</div>`;
 
-    // Scroll to top
+    // Reset scroll to top smoothly
     window.scrollTo({ top: 0, behavior: 'instant' });
 
-    // Initialize page-specific JS
-    if (route.init) {
-      // Use requestAnimationFrame to ensure DOM is painted
-      requestAnimationFrame(() => {
-        route.init();
-        initScrollReveal();
-      });
-    } else {
-      requestAnimationFrame(() => {
-        initScrollReveal();
-      });
-    }
+    // Execute page-specific lifecycle hooks & initialize intersection animations
+    requestAnimationFrame(() => {
+      if (typeof route.init === 'function') {
+        try {
+          route.init();
+        } catch (err) {
+          console.error('[JoKelar Router] Error during page init:', err);
+        }
+      }
+      initScrollReveal();
+    });
   }
 
-  // Notify listeners
   if (onRouteChange) {
     onRouteChange(hash);
   }
 }
 
 /**
- * Initialize Intersection Observer for scroll-triggered animations.
+ * Vanilla JS IntersectionObserver for high-performance scroll triggers.
+ * Detects elements marked with .reveal or .reveal-scale and triggers CSS transitions.
  */
-function initScrollReveal() {
-  const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
+export function initScrollReveal() {
+  if (scrollObserver) {
+    scrollObserver.disconnect();
+  }
+
+  const revealElements = document.querySelectorAll('.reveal, .reveal-scale');
 
   if (revealElements.length === 0) return;
 
-  const observer = new IntersectionObserver(
+  scrollObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          observer.unobserve(entry.target);
+          entry.target.classList.add('revealed');
+          // Once animated, unobserve for performance
+          scrollObserver.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.1,
+      threshold: 0.12,
       rootMargin: '0px 0px -40px 0px',
     }
   );
 
   revealElements.forEach((el) => {
-    // Reset animation state for fresh page loads
-    el.classList.remove('animate-in');
-    observer.observe(el);
+    scrollObserver.observe(el);
   });
 }
 
 /**
- * Intercept clicks on [data-path] links for SPA navigation.
- */
-function interceptLinks() {
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('[data-path]');
-    if (link) {
-      e.preventDefault();
-      const path = link.getAttribute('data-path');
-      navigateTo(path);
-    }
-  });
-}
-
-/**
- * Start the router — call this once on app init.
+ * Start listening for hash changes and initial route.
  */
 export function startRouter() {
-  interceptLinks();
   window.addEventListener('hashchange', resolveRoute);
-
-  // Initial route
   resolveRoute();
 }
