@@ -160,6 +160,56 @@ const unitPrices = [
   { service: 'Konsultasi / mentoring per sesi (60 menit)', price: 'Rp 40.000', cat: 'Mentoring' }
 ];
 
+const WA_PHONE = '6285150754258';
+
+function getStudentWaUrl(pkg) {
+  const msg = `Halo Admin JoKelar, saya mau konsultasi & order Paket Mahasiswa:
+
+📦 *Paket*: ${pkg.level} - ${pkg.name}
+💰 *Biaya*: ${pkg.price}
+📋 *Fasilitas*:
+${pkg.features.map(f => `• ${f}`).join('\n')}
+
+📝 *Detail Tugas*:
+• Mata Kuliah / Jurusan: 
+• Topik / Judul: 
+• Deadline: 
+
+Mohon info ketersediaan slot pengerjaan. Terima kasih!`;
+  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+}
+
+function getBundlingWaUrl(pkg) {
+  const msg = `Halo Admin JoKelar, saya mau konsultasi & order Paket Bundling:
+
+📦 *Paket*: ${pkg.code} - ${pkg.name}
+💰 *Biaya*: ${pkg.price}
+📋 *Cakupan*:
+${pkg.features.map(f => `• ${f}`).join('\n')}
+
+📝 *Detail Kebutuhan*:
+• Deskripsi Tugas / Proyek: 
+• Target Deadline: 
+
+Mohon konfirmasi estimasi dan langkah selanjutnya. Terima kasih!`;
+  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+}
+
+function getUnitWaUrl(item) {
+  const msg = `Halo Admin JoKelar, saya mau order layanan satuan:
+
+🏷️ *Layanan*: ${item.service}
+📂 *Kategori*: ${item.cat}
+💰 *Harga*: ${item.price}
+
+📝 *Detail Kebutuhan*:
+• Instruksi / Keterangan: 
+• Deadline: 
+
+Mohon dibantu konfirmasi ketersediaan tim. Terima kasih!`;
+  return `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+}
+
 // 7 Langkah Alur Pemesanan Resmi (Sesuai gambar lampiran)
 const workflowSteps = [
   {
@@ -297,7 +347,7 @@ export function render() {
                       `).join('')}
                     </ul>
                   </div>
-                  <a href="https://wa.me/message/RUK4IFU7KE4YK1?text=${encodeURIComponent(`Halo JoKelar, saya tertarik memesan Paket Mahasiswa Level ${pkg.name} (${pkg.price})`)}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all ${pkg.highlight ? 'bg-primary text-on-primary hover:bg-primary-container shadow-sm' : 'bg-surface-container hover:bg-surface-container-high text-on-surface'}">
+                  <a href="${getStudentWaUrl(pkg)}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all ${pkg.highlight ? 'bg-primary text-on-primary hover:bg-primary-container shadow-sm' : 'bg-surface-container hover:bg-surface-container-high text-on-surface'}">
                     Pilih Paket
                   </a>
                 </div>
@@ -328,7 +378,7 @@ export function render() {
                       `).join('')}
                     </ul>
                   </div>
-                  <a href="https://wa.me/message/RUK4IFU7KE4YK1?text=${encodeURIComponent(`Halo JoKelar, saya tertarik memesan ${pkg.code} - ${pkg.name} (${pkg.price})`)}" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all">
+                  <a href="${getBundlingWaUrl(pkg)}" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all">
                     Pilih Bundling
                   </a>
                 </div>
@@ -358,7 +408,7 @@ export function render() {
                         </td>
                         <td class="py-2.5 px-space-md text-right font-bold text-primary font-label-code">${item.price}</td>
                         <td class="py-2.5 px-space-md text-center">
-                          <a href="https://wa.me/message/RUK4IFU7KE4YK1?text=${encodeURIComponent(`Halo JoKelar, saya ingin pesan layanan satuan: ${item.service} (${item.price})`)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-primary hover:underline font-semibold font-label-badge text-xs">
+                          <a href="${getUnitWaUrl(item)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-primary hover:underline font-semibold font-label-badge text-xs">
                             <span>Pesan</span>
                             <span class="material-symbols-outlined text-xs">arrow_forward</span>
                           </a>

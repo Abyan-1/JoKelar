@@ -178,7 +178,7 @@ function renderHeroSideCard(order) {
 
       <div class="flex items-center justify-between pt-space-xs text-body-sm text-on-surface-variant">
         <span class="font-label-code text-label-code text-on-surface-variant">Respon Cepat Admin: &lt;15 Mnt</span>
-        <a href="https://wa.me/message/RUK4IFU7KE4YK1" target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline flex items-center gap-0.5">
+        <a href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." target="_blank" rel="noopener noreferrer" class="text-primary font-semibold hover:underline flex items-center gap-0.5">
           <span>Konsultasi</span>
           <span class="material-symbols-outlined text-sm">arrow_forward</span>
         </a>
@@ -206,7 +206,7 @@ function renderEmptyFeaturedServicesState() {
         <a class="px-space-md py-space-xs bg-primary text-on-primary rounded-full font-body-sm text-body-sm font-semibold hover:bg-primary-container transition-all shadow-sm" data-path="catalog" href="#catalog">
           Buka Catalog
         </a>
-        <a class="px-space-md py-space-xs bg-surface-container text-on-surface rounded-full font-body-sm text-body-sm font-semibold hover:bg-surface-container-high transition-all" href="https://wa.me/message/RUK4IFU7KE4YK1" target="_blank" rel="noopener noreferrer">
+        <a class="px-space-md py-space-xs bg-surface-container text-on-surface rounded-full font-body-sm text-body-sm font-semibold hover:bg-surface-container-high transition-all" href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." target="_blank" rel="noopener noreferrer">
           Tanya Layanan via WA
         </a>
       </div>
@@ -270,7 +270,7 @@ export function render() {
                 <span>Lihat Catalog</span>
                 <span class="material-symbols-outlined text-base">arrow_forward</span>
               </a>
-              <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold rounded-lg hover:bg-surface-container transition-all shadow-sm" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
+              <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold rounded-lg hover:bg-surface-container transition-all shadow-sm" href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." rel="noopener noreferrer" target="_blank">
                 <span class="material-symbols-outlined text-base text-primary">chat</span>
                 <span>Tanya Admin</span>
               </a>
@@ -476,7 +476,7 @@ export function render() {
             </p>
           </div>
           <div class="flex flex-wrap gap-space-sm">
-            <a class="px-space-lg py-space-sm bg-surface-container-lowest text-primary font-body-sm text-body-sm font-bold rounded-lg transition-all hover:bg-surface-container text-center shadow-sm" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
+            <a class="px-space-lg py-space-sm bg-surface-container-lowest text-primary font-body-sm text-body-sm font-bold rounded-lg transition-all hover:bg-surface-container text-center shadow-sm" href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." rel="noopener noreferrer" target="_blank">
               Konsultasi WhatsApp
             </a>
             <a class="px-space-lg py-space-sm bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold rounded-lg transition-all hover:opacity-90 text-center shadow-sm" data-path="catalog" href="#catalog">

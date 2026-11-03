@@ -61,7 +61,7 @@ export function renderNavbar() {
         <div class="flex items-center gap-space-md">
           <!-- CTA Button -->
           <a class="hidden sm:inline-flex items-center gap-space-xs px-space-md py-space-sm bg-secondary-container text-on-secondary-fixed font-label-badge text-label-badge uppercase tracking-wider rounded-xl transition-all hover:bg-secondary-fixed hover:text-on-secondary-fixed active:translate-x-0.5 active:translate-y-0.5"
-             href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
+             href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." rel="noopener noreferrer" target="_blank">
             <span class="material-symbols-outlined text-lg">chat</span>
             <span>Konsultasi Sekarang</span>
           </a>
@@ -76,7 +76,7 @@ export function renderNavbar() {
         <div class="max-w-[1280px] mx-auto px-margin-mobile py-space-md flex flex-col gap-space-xs mobile-menu-enter">
           ${mobileLinks}
           <a class="mt-space-xs inline-flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-secondary-container text-on-secondary-fixed font-label-badge text-label-badge uppercase tracking-wider rounded-xl transition-all sm:hidden"
-             href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
+             href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." rel="noopener noreferrer" target="_blank">
             <span class="material-symbols-outlined text-lg">chat</span>
             <span>Konsultasi Sekarang</span>
           </a>

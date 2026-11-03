@@ -80,7 +80,7 @@ function renderEmptyPortfolioState() {
         Dokumentasi pengerjaan sedang dirapikan demi menjaga privasi klien. Anda tetap dapat langsung mengajukan kebutuhan tugas via WhatsApp admin.
       </p>
       <a 
-        href="https://wa.me/message/RUK4IFU7KE4YK1" 
+        href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." 
         target="_blank" 
         rel="noopener noreferrer"
         class="mt-2 inline-flex items-center gap-1.5 px-space-md py-2 bg-primary text-on-primary rounded-xl font-body-sm text-sm font-semibold hover:bg-primary-container transition-all"
@@ -162,7 +162,7 @@ export function render() {
             <h3 class="font-headline-sm text-lg text-on-surface font-bold">Punya tugas serupa yang ingin dikerjakan?</h3>
             <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Diskusikan panduan, rubrik, atau tenggat waktu tugas Anda secara langsung.</p>
           </div>
-          <a class="whitespace-nowrap inline-flex items-center gap-1.5 px-space-md py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
+          <a class="whitespace-nowrap inline-flex items-center gap-1.5 px-space-md py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all" href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." rel="noopener noreferrer" target="_blank">
             <span class="material-symbols-outlined text-base">chat</span>
             <span>Konsultasi Gratis</span>
           </a>
@@ -214,7 +214,7 @@ export function render() {
               <div class="mt-1 font-label-code text-xs text-on-surface-variant" id="portModalClient">-</div>
             </div>
 
-            <a class="w-full py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-1.5" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
+            <a id="portModalWhatsAppBtn" class="w-full py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all flex items-center justify-center gap-1.5" href="https://wa.me/6285150754258" rel="noopener noreferrer" target="_blank">
               <span class="material-symbols-outlined text-base">chat</span>
               <span>Pesan Tugas Serupa via WhatsApp</span>
             </a>
@@ -262,6 +262,11 @@ export function init() {
     }
 
     if (modal) {
+      const waBtn = document.getElementById('portModalWhatsAppBtn');
+      if (waBtn) {
+        const msg = `Halo Admin JoKelar, saya tertarik dengan pengerjaan portofolio:\n\n📌 *Referensi*: ${item.title}\n📚 *Bidang*: ${item.subject || '-'} (${item.categoryLabel || item.category || 'Akademik'})\n⭐ *Hasil*: ${item.grade || 'Nilai A'} • ${item.turnitin || 'Bebas Plagiasi'}\n\nSaya memiliki tugas / proyek serupa dan ingin konsultasi estimasi biaya serta deadline. Terima kasih!`;
+        waBtn.href = `https://wa.me/6285150754258?text=${encodeURIComponent(msg)}`;
+      }
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }

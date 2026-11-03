@@ -51,7 +51,7 @@ export function render() {
 
             <div class="flex items-center gap-2 pt-2 border-t border-surface-container-low">
               <a 
-                href="https://wa.me/message/RUK4IFU7KE4YK1" 
+                href="https://wa.me/6285150754258?text=Halo%20Admin%20JoKelar%2C%20saya%20ingin%20konsultasi%20pengerjaan%20tugas." 
                 target="_blank" 
                 rel="noopener noreferrer"
                 class="flex-1 py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container font-label-badge text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-xs"
@@ -60,10 +60,10 @@ export function render() {
                 <span>Chat WhatsApp</span>
               </a>
               <button 
-                data-copy="https://wa.me/message/RUK4IFU7KE4YK1" 
+                data-copy="+6285150754258" 
                 class="copy-btn p-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl transition-colors"
-                title="Salin Link WhatsApp"
-                aria-label="Salin Link WhatsApp"
+                title="Salin Nomor WhatsApp"
+                aria-label="Salin Nomor WhatsApp"
               >
                 <span class="material-symbols-outlined text-base pointer-events-none">content_copy</span>
               </button>
