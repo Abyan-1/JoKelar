@@ -1,424 +1,488 @@
 /**
- * ==============================================================================
- * JoKelar — Halaman Katalog Tugas (Katalog.js)
- * ==============================================================================
- * Data dummy katalog tugas & portofolio telah dihilangkan dan digantikan dengan
- * template dinamis yang siap menerima data asli dari database.
- * 
- * Untuk mengisi data:
- * - Isi array `activeCatalogItems` di `src/data/databaseTemplates.js`, ATAU
- * - Hubungkan query database/API di sini untuk mengisi data portofolio.
- * ==============================================================================
+ * JoKelar — Halaman Catalog (Katalog.js)
+ * Catalog 2026: Task Assistance & Digital Services.
+ * Minimalis, modern, dan terstruktur.
  */
 
-import { activeCatalogItems } from '../data/databaseTemplates.js';
+import coverImg from '../assets/Catalog/Cover.png';
+import kategoriImg from '../assets/Catalog/Produt Kategori.png';
+import hargaImg from '../assets/Catalog/Daftar Harga.png';
+import bundleImg from '../assets/Catalog/Bundle.png';
+import bundleV2Img from '../assets/Catalog/Bundle-v2.png';
+import workflowImg from '../assets/Catalog/Workflow.png';
 
-/**
- * Template card untuk satu item katalog tugas.
- * @param {import('../data/databaseTemplates.js').CatalogItem} item 
- * @returns {string} HTML markup
- */
-export function renderCatalogItemCard(item) {
-  return `
-    <article 
-      class="catalog-item group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-none hover:shadow-md transition-all duration-300 cursor-pointer border border-surface-container-high" 
-      data-category="${item.category || 'umum'}"
-      data-id="${item.id}"
-      tabindex="0"
-      role="button"
-      aria-label="Lihat detail ${item.title || 'tugas'}"
-    >
-      <div class="relative h-44 w-full overflow-hidden bg-surface-container-low">
-        <img 
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-          src="${item.image || ''}" 
-          alt="${item.alt || item.title || 'Portofolio Tugas'}"
-          loading="lazy"
-          onerror="this.src='https://placehold.co/600x400/e9edff/0037b0?text=${encodeURIComponent(item.subject || 'JoKelar')}';"
-        />
-        <span class="absolute top-space-xs left-space-xs px-space-xs py-0.5 bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface font-label-badge text-label-badge rounded shadow-xs">
-          ${item.categoryLabel || item.category || 'Tugas'}
-        </span>
-      </div>
-      <div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
-        <div>
-          <span class="font-label-code text-label-code text-on-surface-variant font-medium">
-            ${item.subject || 'Akademik'}
-          </span>
-          <h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors line-clamp-2 mt-0.5">
-            ${item.title || 'Judul Tugas'}
-          </h3>
-        </div>
-        <div class="flex items-center justify-between font-label-code text-label-code text-on-surface-variant pt-space-xs border-t border-surface-container-low">
-          <span>${item.statLabel || ''}</span>
-          <span class="text-primary font-bold group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
-            Detail →
-          </span>
-        </div>
-      </div>
-    </article>
-  `;
-}
+// Data Kategori Layanan
+const serviceCategories = [
+  {
+    icon: 'devices',
+    title: 'Website & Aplikasi',
+    desc: 'Landing page, company profile, web sederhana, dan perbaikan bug.',
+    tag: 'Web Dev'
+  },
+  {
+    icon: 'database',
+    title: 'Database & Data',
+    desc: 'Desain database, query SQL, entri & rapikan data, dashboard.',
+    tag: 'Data'
+  },
+  {
+    icon: 'description',
+    title: 'Laporan & Dokumen',
+    desc: 'Laporan teknis/proyek, dokumentasi sistem, dan panduan pengguna.',
+    tag: 'Dokumen'
+  },
+  {
+    icon: 'slideshow',
+    title: 'Desain & Presentasi',
+    desc: 'Slide presentasi PPT, poster/banner, dan video pendek kreatif.',
+    tag: 'Desain'
+  },
+  {
+    icon: 'school',
+    title: 'Pendampingan',
+    desc: 'Konsultasi, review kode/laporan, dan bimbingan belajar coding.',
+    tag: 'Mentoring'
+  }
+];
 
-/**
- * Template Empty State saat belum ada data katalog di database.
- * @returns {string} HTML markup
- */
-function renderEmptyCatalogState() {
-  return `
-    <div class="col-span-full py-space-xl px-space-lg bg-surface-container-low rounded-2xl border border-dashed border-outline-variant text-center flex flex-col items-center justify-center gap-space-sm my-space-md shadow-sm">
-      <div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center text-primary mb-1">
-        <span class="material-symbols-outlined text-4xl">folder_open</span>
-      </div>
-      <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
-        Katalog Tugas Sedang Disiapkan
-      </h3>
-      <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
-        Portofolio pengerjaan terverifikasi akan segera tersedia setelah koneksi database diaktifkan. Anda tetap dapat langsung mengajukan kebutuhan tugas via WhatsApp admin.
-      </p>
-      <div class="flex flex-wrap items-center justify-center gap-space-sm pt-space-xs">
-        <a 
-          href="https://wa.me/message/RUK4IFU7KE4YK1" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-space-xs px-space-lg py-space-xs bg-primary text-on-primary rounded-full font-body-sm text-body-sm font-semibold hover:bg-primary-container transition-all shadow-sm"
-        >
-          <span class="material-symbols-outlined text-lg">chat</span>
-          <span>Konsultasi Tugas via WhatsApp</span>
-        </a>
-      </div>
-      <div class="mt-space-xs inline-flex items-center gap-2 px-space-md py-1 bg-surface-container-high rounded-full text-xs font-label-code text-primary font-semibold">
-        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-        <span>Template Database Ready • 0 Portofolio Aktif</span>
-      </div>
-    </div>
-  `;
-}
+// Data Paket Mahasiswa
+const studentPackages = [
+  {
+    level: 'LEVEL 01',
+    name: 'Pemula',
+    price: 'Rp 99.000',
+    subtitle: 'Cocok untuk tugas sederhana mahasiswa semester awal',
+    features: [
+      'PPT hingga 15 slide',
+      'Poster / banner pendukung',
+      '1 sesi konsultasi',
+      'Revisi 1x'
+    ],
+    highlight: false,
+    badge: 'Semester Awal'
+  },
+  {
+    level: 'LEVEL 02',
+    name: 'Medium',
+    price: 'Rp 275.000',
+    subtitle: 'Cocok untuk tugas matkul, praktikum, proyek semester',
+    features: [
+      'Laporan teknis hingga 15 halaman',
+      'PPT pendukung',
+      'Desain database sederhana',
+      '1 sesi mentoring',
+      'Revisi 2x'
+    ],
+    highlight: true,
+    badge: 'Paling Populer'
+  },
+  {
+    level: 'LEVEL 03',
+    name: 'Lanjutan',
+    price: 'Rp 599.000',
+    subtitle: 'Cocok untuk proyek besar yang butuh sistem atau data',
+    features: [
+      'Website hingga 3 halaman',
+      'Desain database + 5 query',
+      'Dokumentasi / panduan pengguna',
+      '2 sesi mentoring',
+      'Revisi 2x + garansi bug 7 hari'
+    ],
+    highlight: false,
+    badge: 'Proyek Kompleks'
+  }
+];
+
+// Data Paket Bundling
+const bundlingPackages = [
+  {
+    code: 'BUNDLING 01',
+    name: 'Mulai Online',
+    price: 'Rp 350.000',
+    desc: 'Untuk yang ingin tampil online dengan cepat.',
+    features: [
+      '1 landing page responsif',
+      '1 desain banner/poster pendukung',
+      'Revisi hingga 2x'
+    ]
+  },
+  {
+    code: 'BUNDLING 02',
+    name: 'Rapi Dokumen',
+    price: 'Rp 150.000',
+    desc: 'Untuk laporan dan dokumentasi yang siap pakai.',
+    features: [
+      'Penyusunan laporan teknis/proyek (15 hal)',
+      'Template PPT pendukung',
+      'Revisi hingga 2x'
+    ]
+  },
+  {
+    code: 'BUNDLING 03',
+    name: 'Data Beres',
+    price: 'Rp 250.000',
+    desc: 'Untuk data praktikum atau riset yang berantakan.',
+    features: [
+      'Rapikan & input data (500 baris)',
+      'Desain database sederhana + 5 query',
+      'Panduan singkat penggunaan',
+      'Revisi hingga 2x'
+    ]
+  },
+  {
+    code: 'BUNDLING 04',
+    name: 'Paket Lengkap',
+    price: 'Rp 750.000',
+    desc: 'Solusi all-in-one untuk proyek dan usaha kecil.',
+    features: [
+      'Website company profile (hingga 5 hal)',
+      'Dokumentasi & panduan admin',
+      'Desain logo/banner dasar',
+      'Garansi perbaikan bug 7 hari'
+    ]
+  }
+];
+
+// Data Harga Satuan
+const unitPrices = [
+  { service: 'Landing page 1 halaman', price: 'Rp 200.000', cat: 'Web' },
+  { service: 'Website tambahan per halaman', price: 'Rp 50.000', cat: 'Web' },
+  { service: 'Perbaikan bug / perubahan kecil', price: 'Rp 30.000', cat: 'Web' },
+  { service: 'Desain database sederhana', price: 'Rp 100.000', cat: 'Data' },
+  { service: 'Query / laporan data', price: 'Rp 25.000', cat: 'Data' },
+  { service: 'Input & rapikan data', price: 'Rp 20.000', cat: 'Data' },
+  { service: 'Laporan teknis (hingga 10 halaman)', price: 'Rp 100.000', cat: 'Dokumen' },
+  { service: 'Halaman tambahan laporan', price: 'Rp 5.000', cat: 'Dokumen' },
+  { service: 'Dokumentasi sistem / panduan pengguna', price: 'Rp 75.000', cat: 'Dokumen' },
+  { service: 'Presentasi PPT (hingga 15 slide)', price: 'Rp 50.000', cat: 'Desain' },
+  { service: 'Poster / banner', price: 'Rp 30.000', cat: 'Desain' },
+  { service: 'Video pendek (hingga 30 detik)', price: 'Rp 100.000', cat: 'Desain' },
+  { service: 'Konsultasi / mentoring per sesi (60 menit)', price: 'Rp 40.000', cat: 'Mentoring' }
+];
+
+// 7 Langkah Alur Pemesanan Resmi (Sesuai gambar lampiran)
+const workflowSteps = [
+  {
+    step: '1',
+    title: 'Konsultasi',
+    desc: 'Klien menyampaikan kebutuhan, deadline, dan referensi lewat chat/form.',
+    color: 'bg-primary text-on-primary'
+  },
+  {
+    step: '2',
+    title: 'Penawaran & Deal',
+    desc: 'Kami kirim estimasi harga, timeline, dan cakupan kerja. Klien menyetujui S&K.',
+    color: 'bg-primary text-on-primary'
+  },
+  {
+    step: '3',
+    title: 'DP 50%',
+    desc: 'Pembayaran awal, lalu pesanan masuk antrean pengerjaan resmi.',
+    color: 'bg-secondary-container text-on-secondary-fixed'
+  },
+  {
+    step: '4',
+    title: 'Pengerjaan',
+    desc: 'Dikerjakan sesuai keahlian tim; jika di luar kapasitas, dialihkan ke mitra terpercaya dengan data terbatas.',
+    color: 'bg-primary text-on-primary'
+  },
+  {
+    step: '5',
+    title: 'Preview & Revisi',
+    desc: 'Klien menerima draft/watermark dan memberi masukan (maks. 2x revisi).',
+    color: 'bg-secondary-container text-on-secondary-fixed'
+  },
+  {
+    step: '6',
+    title: 'Pelunasan & Serah Terima',
+    desc: 'Sisa 50% dibayar, file final/akses dikirim beserta panduan singkat.',
+    color: 'bg-secondary-container text-on-secondary-fixed'
+  },
+  {
+    step: '7',
+    title: 'Follow-up',
+    desc: 'Masa garansi 7 hari, lalu minta testimoni (data disamarkan).',
+    color: 'bg-primary text-on-primary'
+  }
+];
 
 export function render() {
-  const hasData = Array.isArray(activeCatalogItems) && activeCatalogItems.length > 0;
-
   return `
     <div class="flex flex-col w-full">
-      <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin pt-space-xl pb-space-xl">
+      <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin pt-space-lg pb-space-xl">
         
-        <!-- Header Banner -->
-        <div class="py-space-xl mb-space-lg text-center max-w-2xl mx-auto flex flex-col items-center gap-space-xs">
-          <span class="font-label-code text-label-code text-primary uppercase tracking-wider font-semibold">
-            Portofolio Terverifikasi
-          </span>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-extrabold">
-            Katalog Tugas
+        <!-- Header Banner Minimalis Modern -->
+        <div class="text-center max-w-2xl mx-auto mb-space-xl flex flex-col items-center gap-space-xs">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="font-label-badge text-xs uppercase text-primary font-bold tracking-wider">Catalog 2026</span>
+          </div>
+          <h1 class="font-headline-lg text-2xl md:text-4xl text-on-surface tracking-tight font-extrabold">
+            Catalog JoKelar
           </h1>
-          <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
-            Koleksi pengerjaan akademik terbaik bebas plagiarisme dengan standar mutu tinggi.
+          <p class="font-body-sm text-sm text-on-surface-variant max-w-md">
+            Layanan asistensi tugas akademik dan solusi digital terstruktur dengan harga transparan ramah kantong.
           </p>
         </div>
 
-        <!-- Filter Bar & Search Tools -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-xl pb-space-md">
-          <div class="flex flex-wrap items-center gap-space-xs" id="filter-container">
-            <button class="filter-tab px-space-md py-space-xs rounded-full font-label-badge text-label-badge transition-all bg-primary text-on-primary shadow-sm" data-target="all">
-              Semua
-            </button>
-            <button class="filter-tab px-space-md py-space-xs rounded-full font-label-badge text-label-badge transition-all text-on-surface-variant hover:text-on-surface bg-surface-container-low" data-target="mahasiswa">
-              Mahasiswa
-            </button>
-            <button class="filter-tab px-space-md py-space-xs rounded-full font-label-badge text-label-badge transition-all text-on-surface-variant hover:text-on-surface bg-surface-container-low" data-target="pelajar">
-              Pelajar
-            </button>
-            <button class="filter-tab px-space-md py-space-xs rounded-full font-label-badge text-label-badge transition-all text-on-surface-variant hover:text-on-surface bg-surface-container-low" data-target="umum">
-              Umum / Profesional
+        <!-- 5 Kategori Produk & Layanan -->
+        <section class="mb-space-xl">
+          <div class="flex items-center justify-between mb-space-md">
+            <h2 class="font-headline-sm text-lg md:text-xl text-on-surface font-bold">Kategori Produk</h2>
+            <span class="font-label-code text-xs text-on-surface-variant">5 Bidang Keahlian</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-sm">
+            ${serviceCategories.map(cat => `
+              <div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 hover:border-primary/50 transition-all flex flex-col justify-between gap-space-sm shadow-xs">
+                <div>
+                  <div class="w-10 h-10 rounded-xl bg-surface-container text-primary flex items-center justify-center mb-space-xs">
+                    <span class="material-symbols-outlined text-xl">${cat.icon}</span>
+                  </div>
+                  <span class="font-label-code text-[11px] text-primary font-semibold uppercase tracking-wider">${cat.tag}</span>
+                  <h3 class="font-headline-sm text-sm font-bold text-on-surface mt-0.5">${cat.title}</h3>
+                  <p class="font-body-sm text-xs text-on-surface-variant mt-1 leading-relaxed">${cat.desc}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- Pricing Packages Section with Tabs -->
+        <section class="mb-space-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+            <div>
+              <h2 class="font-headline-sm text-lg md:text-xl text-on-surface font-bold">Paket &amp; Biaya Pengerjaan</h2>
+              <p class="font-body-sm text-xs text-on-surface-variant">Pilih paket siap pakai atau pesan layanan satuan.</p>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="inline-flex p-1 bg-surface-container rounded-xl gap-1">
+              <button class="catalog-tab-btn active px-3 py-1.5 rounded-lg font-label-badge text-xs font-bold transition-all bg-surface-container-lowest text-primary shadow-xs" data-target="tab-mahasiswa">
+                Paket Mahasiswa
+              </button>
+              <button class="catalog-tab-btn px-3 py-1.5 rounded-lg font-label-badge text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface" data-target="tab-bundling">
+                Paket Bundling
+              </button>
+              <button class="catalog-tab-btn px-3 py-1.5 rounded-lg font-label-badge text-xs font-bold transition-all text-on-surface-variant hover:text-on-surface" data-target="tab-satuan">
+                Daftar Satuan
+              </button>
+            </div>
+          </div>
+
+          <!-- Tab Content 1: Paket Mahasiswa -->
+          <div id="tab-mahasiswa" class="catalog-tab-content block">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+              ${studentPackages.map(pkg => `
+                <div class="relative bg-surface-container-lowest rounded-2xl p-space-lg flex flex-col justify-between border ${pkg.highlight ? 'border-primary ring-2 ring-primary/20 shadow-md' : 'border-outline-variant/30 shadow-xs'} transition-all">
+                  ${pkg.highlight ? `
+                    <span class="absolute -top-3 right-4 px-2.5 py-0.5 bg-secondary-container text-on-secondary-fixed font-label-badge text-[11px] font-bold rounded-full uppercase tracking-wider">
+                      ${pkg.badge}
+                    </span>
+                  ` : ''}
+                  <div>
+                    <span class="font-label-code text-xs text-primary font-bold">${pkg.level}</span>
+                    <h3 class="font-headline-lg text-xl md:text-2xl font-black text-on-surface uppercase mt-0.5">${pkg.name}</h3>
+                    <div class="mt-2 mb-3">
+                      <span class="font-headline-lg text-2xl font-extrabold text-primary">${pkg.price}</span>
+                    </div>
+                    <p class="font-body-sm text-xs text-on-surface-variant pb-space-sm border-b border-surface-container-low mb-space-sm italic">
+                      ${pkg.subtitle}
+                    </p>
+                    <ul class="space-y-2 mb-space-md">
+                      ${pkg.features.map(f => `
+                        <li class="flex items-center gap-2 font-body-sm text-xs text-on-surface">
+                          <span class="material-symbols-outlined text-primary text-base">check_circle</span>
+                          <span>${f}</span>
+                        </li>
+                      `).join('')}
+                    </ul>
+                  </div>
+                  <a href="https://wa.me/message/RUK4IFU7KE4YK1?text=${encodeURIComponent(`Halo JoKelar, saya tertarik memesan Paket Mahasiswa Level ${pkg.name} (${pkg.price})`)}" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all ${pkg.highlight ? 'bg-primary text-on-primary hover:bg-primary-container shadow-sm' : 'bg-surface-container hover:bg-surface-container-high text-on-surface'}">
+                    Pilih Paket
+                  </a>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Tab Content 2: Paket Bundling -->
+          <div id="tab-bundling" class="catalog-tab-content hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+              ${bundlingPackages.map(pkg => `
+                <div class="bg-surface-container-lowest rounded-2xl p-space-md flex flex-col justify-between border border-outline-variant/30 shadow-xs">
+                  <div>
+                    <span class="font-label-code text-[11px] text-primary font-bold">${pkg.code}</span>
+                    <h3 class="font-headline-sm text-base font-extrabold text-on-surface uppercase mt-0.5">${pkg.name}</h3>
+                    <div class="my-2">
+                      <span class="font-headline-sm text-xl font-extrabold text-primary">${pkg.price}</span>
+                    </div>
+                    <p class="font-body-sm text-xs text-on-surface-variant pb-space-xs border-b border-surface-container-low mb-space-xs">
+                      ${pkg.desc}
+                    </p>
+                    <ul class="space-y-1.5 mb-space-md mt-2">
+                      ${pkg.features.map(f => `
+                        <li class="flex items-start gap-1.5 font-body-sm text-xs text-on-surface">
+                          <span class="material-symbols-outlined text-primary text-sm mt-0.5">check</span>
+                          <span>${f}</span>
+                        </li>
+                      `).join('')}
+                    </ul>
+                  </div>
+                  <a href="https://wa.me/message/RUK4IFU7KE4YK1?text=${encodeURIComponent(`Halo JoKelar, saya tertarik memesan ${pkg.code} - ${pkg.name} (${pkg.price})`)}" target="_blank" rel="noopener noreferrer" class="w-full py-2 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl font-label-badge text-xs uppercase tracking-wider text-center transition-all">
+                    Pilih Bundling
+                  </a>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Tab Content 3: Daftar Satuan -->
+          <div id="tab-satuan" class="catalog-tab-content hidden">
+            <div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-xs">
+              <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider">
+                      <th class="py-3 px-space-md">Layanan</th>
+                      <th class="py-3 px-space-md">Kategori</th>
+                      <th class="py-3 px-space-md text-right">Harga</th>
+                      <th class="py-3 px-space-md text-center">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-surface-container-low font-body-sm text-xs text-on-surface">
+                    ${unitPrices.map(item => `
+                      <tr class="hover:bg-surface-container-low/50 transition-colors">
+                        <td class="py-2.5 px-space-md font-medium text-on-surface">${item.service}</td>
+                        <td class="py-2.5 px-space-md text-on-surface-variant">
+                          <span class="px-2 py-0.5 rounded-md bg-surface-container text-primary font-label-code text-[11px] font-semibold">${item.cat}</span>
+                        </td>
+                        <td class="py-2.5 px-space-md text-right font-bold text-primary font-label-code">${item.price}</td>
+                        <td class="py-2.5 px-space-md text-center">
+                          <a href="https://wa.me/message/RUK4IFU7KE4YK1?text=${encodeURIComponent(`Halo JoKelar, saya ingin pesan layanan satuan: ${item.service} (${item.price})`)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-primary hover:underline font-semibold font-label-badge text-xs">
+                            <span>Pesan</span>
+                            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                          </a>
+                        </td>
+                      </tr>
+                    `).join('')}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7-Langkah Workflow Pemesanan (Sesuai Desain Asli) -->
+        <section class="mb-space-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs mb-space-md">
+            <div>
+              <div class="inline-flex items-center gap-1 font-label-code text-xs text-primary font-bold uppercase tracking-wider">
+                <span class="w-2 h-2 rounded-full bg-primary"></span>
+                <span>Alur Transparan</span>
+              </div>
+              <h2 class="font-headline-sm text-xl md:text-2xl text-on-surface font-black mt-0.5">Workflow Pemesanan</h2>
+            </div>
+            <button id="viewBrochureBtn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-xs transition-colors self-start sm:self-auto">
+              <span class="material-symbols-outlined text-base">image</span>
+              <span>Lihat Poster Alur</span>
             </button>
           </div>
-          <div class="relative w-full sm:w-64">
-            <input 
-              class="w-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/60 font-body-sm text-body-sm px-space-md py-space-xs pl-9 rounded-full shadow-none outline-none focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 transition-all" 
-              id="searchInput" 
-              placeholder="Cari tugas..." 
-              type="text"
-            />
-            <span class="material-symbols-outlined absolute left-2.5 top-2 text-on-surface-variant text-lg">search</span>
+
+          <!-- 7 Steps List Modern Neo-Brutalist -->
+          <div class="flex flex-col gap-2.5 max-w-3xl mx-auto">
+            ${workflowSteps.map(w => `
+              <div class="flex items-center bg-surface-container-lowest rounded-xl border-2 border-on-surface shadow-[3px_3px_0px_#141b2b] overflow-hidden transition-all hover:translate-x-1">
+                <div class="w-12 sm:w-16 self-stretch ${w.color} flex items-center justify-center font-headline-lg text-lg sm:text-2xl font-black shrink-0 border-r-2 border-on-surface">
+                  ${w.step}
+                </div>
+                <div class="p-3 sm:px-4 flex flex-col justify-center">
+                  <h4 class="font-headline-sm text-sm sm:text-base font-extrabold text-on-surface leading-tight">${w.title}</h4>
+                  <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed mt-0.5">${w.desc}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </section>
+
+        <!-- Gallery Booklet / Asset Modal -->
+        <div id="brochureModal" class="fixed inset-0 z-50 hidden bg-inverse-surface/70 backdrop-blur-xs flex items-center justify-center p-space-md">
+          <div class="relative max-w-xl w-full bg-surface-container-lowest rounded-2xl overflow-hidden shadow-2xl border border-outline-variant/40">
+            <div class="p-3 bg-surface-container flex items-center justify-between">
+              <span class="font-headline-sm text-sm font-bold text-on-surface">Poster Workflow Resmi JoKelar</span>
+              <button id="closeBrochureBtn" class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface hover:bg-surface-container-high">
+                <span class="material-symbols-outlined text-base">close</span>
+              </button>
+            </div>
+            <div class="p-3 max-h-[80vh] overflow-y-auto flex items-center justify-center bg-surface-container-low">
+              <img src="${workflowImg}" alt="Workflow Pemesanan JoKelar" class="w-full h-auto rounded-lg shadow-sm" />
+            </div>
           </div>
         </div>
 
-        <!-- Cards Grid Container -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-space-lg" id="catalogGrid">
-          ${
-            hasData
-              ? activeCatalogItems.map(renderCatalogItemCard).join('')
-              : renderEmptyCatalogState()
-          }
-        </div>
-
-        <!-- Search Not Found Notice (Hidden by default) -->
-        <div class="hidden flex-col items-center justify-center p-space-xl bg-surface-container rounded-xl text-center my-space-lg" id="emptyNotice">
-          <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-space-xs">search_off</span>
-          <h4 class="font-headline-sm text-headline-sm text-on-surface">Portofolio tidak ditemukan</h4>
-          <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-md">
-            Coba gunakan kata kunci lain atau pilih kategori 'Semua' untuk melihat seluruh portofolio pengerjaan kami.
-          </p>
-        </div>
-
-        <!-- Bottom Action Banner -->
-        <section class="mt-space-xl py-space-xl px-space-md bg-surface-container-low rounded-2xl text-center flex flex-col items-center justify-center gap-space-md max-w-3xl mx-auto">
-          <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">
-            Punya tugas spesifik yang ingin dikerjakan?
-          </h2>
-          <p class="font-body-sm text-body-sm text-on-surface-variant max-w-md">
-            Konsultasikan silabus, panduan, atau deadline tugas Anda secara langsung dengan tim spesialis kami.
-          </p>
-          <a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-space-sm bg-primary text-on-primary font-body-sm text-body-sm font-semibold rounded-full hover:bg-primary-container transition-all active:scale-[0.98]" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
-            <span class="material-symbols-outlined text-base">chat</span>
-            <span>Konsultasi Bebas Biaya</span>
+        <!-- Portofolio Teaser Banner -->
+        <section class="mt-space-lg p-space-md md:p-space-lg bg-surface-container-low rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-space-md border border-outline-variant/30">
+          <div>
+            <span class="font-label-code text-xs text-primary font-bold uppercase tracking-wider">Hasil Pengerjaan Nyata</span>
+            <h3 class="font-headline-sm text-base md:text-lg font-bold text-on-surface mt-0.5">Ingin melihat contoh tugas yang pernah kami kerjakan?</h3>
+            <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Kunjungi halaman Portofolio untuk melihat skor Turnitin, nilai A, dan testimoni mahasiswa.</p>
+          </div>
+          <a class="whitespace-nowrap inline-flex items-center gap-1.5 px-space-md py-2.5 bg-primary text-on-primary font-label-badge text-xs uppercase tracking-wider rounded-xl hover:bg-primary-container transition-all" data-path="portofolio" href="#portofolio">
+            <span>Buka Portofolio</span>
+            <span class="material-symbols-outlined text-sm">east</span>
           </a>
         </section>
 
       </div>
-
-      <!-- Detail Modal (Template untuk menampilkan detail tugas saat di-klik) -->
-      <div class="fixed inset-0 z-50 hidden bg-inverse-surface/60 backdrop-blur-sm flex items-center justify-center p-space-md md:p-space-lg transition-opacity duration-300" id="projectModal">
-        <div class="relative w-full max-w-3xl max-h-[921px] bg-surface-container-lowest rounded-2xl shadow-2xl overflow-y-auto flex flex-col">
-          
-          <!-- Modal Header -->
-          <div class="sticky top-0 z-20 flex items-center justify-between p-space-md bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
-            <div class="flex items-center gap-space-sm">
-              <span class="px-space-sm py-space-xs rounded-lg font-label-badge text-label-badge bg-primary text-on-primary" id="modalCategoryBadge">
-                Kategori
-              </span>
-              <span class="font-label-code text-label-code text-primary bg-surface-container-high px-space-sm py-space-xs rounded-lg font-bold" id="modalGradeBadge">
-                Grade
-              </span>
-            </div>
-            <button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface hover:bg-surface-container-highest transition-colors" id="closeModalBtn" aria-label="Tutup modal">
-              <span class="material-symbols-outlined">close</span>
-            </button>
-          </div>
-
-          <!-- Modal Body -->
-          <div class="p-space-md md:p-space-lg flex flex-col gap-space-lg">
-            <div>
-              <h2 class="font-headline-lg text-headline-lg text-on-surface mb-space-xs" id="modalTitle">
-                Judul Tugas
-              </h2>
-              <div class="flex flex-wrap items-center gap-space-md text-on-surface-variant font-label-code text-label-code">
-                <span class="flex items-center gap-1">
-                  <span class="material-symbols-outlined text-sm">schedule</span> Pengerjaan: <b class="text-on-surface" id="modalDuration">-</b>
-                </span>
-                <span>•</span>
-                <span class="flex items-center gap-1">
-                  <span class="material-symbols-outlined text-sm">check_circle</span> Similarity: <b class="text-on-surface" id="modalTurnitin">-</b>
-                </span>
-                <span>•</span>
-                <span class="flex items-center gap-1">
-                  <span class="material-symbols-outlined text-sm">school</span> Status: <b class="text-primary" id="modalStatusText">Terverifikasi</b>
-                </span>
-              </div>
-            </div>
-
-            <!-- Brief & Tantangan -->
-            <div class="bg-surface-container-low p-space-md rounded-xl">
-              <h4 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs mb-space-xs">
-                <span class="material-symbols-outlined text-primary">assignment</span>
-                <span>Brief &amp; Tantangan Klien</span>
-              </h4>
-              <p class="font-body-md text-body-md text-on-surface-variant" id="modalBrief">
-                -
-              </p>
-            </div>
-
-            <!-- Solusi JoKelar -->
-            <div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm border border-surface-container-high">
-              <h4 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs mb-space-xs">
-                <span class="material-symbols-outlined text-secondary-container">bolt</span>
-                <span>Solusi &amp; Pengerjaan JoKelar</span>
-              </h4>
-              <ul class="font-body-md text-body-md text-on-surface-variant list-disc pl-5 space-y-1" id="modalSolution">
-                <li>-</li>
-              </ul>
-            </div>
-
-            <!-- Testimoni Klien -->
-            <div class="bg-surface-container-high p-space-md rounded-xl">
-              <div class="flex items-center justify-between mb-space-xs">
-                <span class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">
-                  Testimoni Klien Terverifikasi
-                </span>
-                <div class="flex text-secondary-container">
-                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
-                </div>
-              </div>
-              <p class="font-body-md text-body-md text-on-surface italic" id="modalFeedback">
-                -
-              </p>
-              <div class="mt-space-xs flex items-center justify-between font-label-code text-label-code text-on-surface-variant">
-                <span id="modalClientInfo">-</span>
-                <span class="text-primary font-bold">100% Verified Review</span>
-              </div>
-            </div>
-
-            <!-- Call to Action Inside Modal -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-xs bg-surface-container p-space-md rounded-xl">
-              <div class="flex flex-col">
-                <span class="font-headline-sm text-headline-sm text-on-surface">Butuh bantuan di mata kuliah/bidang ini?</span>
-                <span class="font-body-sm text-body-sm text-on-surface-variant">Konsultasikan kebutuhanmu, deal harga ramah mahasiswa.</span>
-              </div>
-              <a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-md py-space-sm bg-primary text-on-primary font-label-badge text-label-badge uppercase rounded-xl hover:bg-primary-container transition-colors shadow-sm" href="https://wa.me/message/RUK4IFU7KE4YK1" id="modalWhatsAppBtn" rel="noopener noreferrer" target="_blank">
-                <span class="material-symbols-outlined text-base">chat</span>
-                <span>Order Tugas Mirip</span>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
     </div>
   `;
 }
 
 export function init() {
-  const modal = document.getElementById('projectModal');
-  const closeBtn = document.getElementById('closeModalBtn');
-  const searchInput = document.getElementById('searchInput');
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  const emptyNotice = document.getElementById('emptyNotice');
+  // Tab switching
+  const tabs = document.querySelectorAll('.catalog-tab-btn');
+  const contents = document.querySelectorAll('.catalog-tab-content');
 
-  function openDetailModal(item) {
-    if (!item) return;
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-target');
 
-    document.getElementById('modalCategoryBadge').textContent = item.categoryLabel || item.category || 'Tugas';
-    document.getElementById('modalGradeBadge').textContent = item.grade || 'Terverifikasi';
-    document.getElementById('modalTitle').textContent = item.title || '';
-    document.getElementById('modalDuration').textContent = item.duration || '-';
-    document.getElementById('modalTurnitin').textContent = item.turnitin || '-';
-    document.getElementById('modalStatusText').textContent = item.statusText || 'Lulus Sempurna';
-    document.getElementById('modalBrief').textContent = item.brief || 'Deskripsi tugas.';
-    document.getElementById('modalFeedback').textContent = item.feedback || 'Pengerjaan berkualitas dan memuaskan.';
-    document.getElementById('modalClientInfo').textContent = item.client || 'Mahasiswa Terverifikasi';
-
-    const solutionList = document.getElementById('modalSolution');
-    solutionList.innerHTML = '';
-    if (Array.isArray(item.solutions) && item.solutions.length > 0) {
-      item.solutions.forEach((sol) => {
-        const li = document.createElement('li');
-        li.textContent = sol;
-        solutionList.appendChild(li);
+      tabs.forEach(t => {
+        t.classList.remove('active', 'bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+        t.classList.add('text-on-surface-variant');
       });
-    } else {
-      const li = document.createElement('li');
-      li.textContent = 'Pengerjaan disesuaikan dengan instruksi dan rubrik akademik.';
-      solutionList.appendChild(li);
-    }
+      tab.classList.add('active', 'bg-surface-container-lowest', 'text-primary', 'shadow-xs');
+      tab.classList.remove('text-on-surface-variant');
 
-    if (modal) {
+      contents.forEach(c => {
+        if (c.id === target) {
+          c.classList.remove('hidden');
+          c.classList.add('block');
+        } else {
+          c.classList.add('hidden');
+          c.classList.remove('block');
+        }
+      });
+    });
+  });
+
+  // Modal Poster Alur
+  const viewBtn = document.getElementById('viewBrochureBtn');
+  const modal = document.getElementById('brochureModal');
+  const closeBtn = document.getElementById('closeBrochureBtn');
+
+  if (viewBtn && modal && closeBtn) {
+    viewBtn.addEventListener('click', () => {
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-    }
-  }
-
-  function closeDetailModal() {
-    if (modal) {
+    });
+    closeBtn.addEventListener('click', () => {
       modal.classList.add('hidden');
       document.body.style.overflow = '';
-    }
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeDetailModal);
-  }
-
-  if (modal) {
+    });
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        closeDetailModal();
-      }
-    });
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeDetailModal();
-    }
-  });
-
-  // Filter functionality
-  filterTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const targetCategory = tab.getAttribute('data-target');
-
-      filterTabs.forEach((t) => {
-        t.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
-        t.classList.add('text-on-surface-variant', 'bg-surface-container-low');
-      });
-      tab.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
-      tab.classList.remove('text-on-surface-variant', 'bg-surface-container-low');
-
-      const items = document.querySelectorAll('.catalog-item');
-      let visibleCount = 0;
-
-      items.forEach((item) => {
-        const itemCat = item.getAttribute('data-category');
-        if (targetCategory === 'all' || itemCat === targetCategory) {
-          item.style.display = 'flex';
-          visibleCount++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (items.length > 0 && visibleCount === 0 && emptyNotice) {
-        emptyNotice.classList.remove('hidden');
-        emptyNotice.classList.add('flex');
-      } else if (emptyNotice) {
-        emptyNotice.classList.add('hidden');
-        emptyNotice.classList.remove('flex');
-      }
-    });
-  });
-
-  // Search functionality
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase().trim();
-      const items = document.querySelectorAll('.catalog-item');
-      let visibleCount = 0;
-
-      items.forEach((item) => {
-        const text = item.innerText.toLowerCase();
-        if (text.includes(query)) {
-          item.style.display = 'flex';
-          visibleCount++;
-        } else {
-          item.style.display = 'none';
-        }
-      });
-
-      if (items.length > 0 && visibleCount === 0 && emptyNotice) {
-        emptyNotice.classList.remove('hidden');
-        emptyNotice.classList.add('flex');
-      } else if (emptyNotice) {
-        emptyNotice.classList.add('hidden');
-        emptyNotice.classList.remove('flex');
-      }
-    });
-  }
-
-  // Delegated item click handler for cards
-  const catalogGrid = document.getElementById('catalogGrid');
-  if (catalogGrid) {
-    catalogGrid.addEventListener('click', (e) => {
-      const card = e.target.closest('.catalog-item');
-      if (card) {
-        const itemId = card.getAttribute('data-id');
-        const itemData = activeCatalogItems.find((i) => String(i.id) === String(itemId));
-        if (itemData) {
-          openDetailModal(itemData);
-        }
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
       }
     });
   }

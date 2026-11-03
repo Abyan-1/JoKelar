@@ -16,22 +16,159 @@
  */
 
 // ==============================================================================
-// 1. DATA AKTIF (Saat ini KOSONG menunggu setup database)
+// 1. DATA AKTIF
 // ==============================================================================
 
 /**
  * Data Tim Pendiri yang aktif ditampilkan pada halaman 'Pendiri'.
- * Set ke [] (kosong) agar tidak menampilkan data dummy.
  * @type {Array<Founder>}
  */
 export const activeFounders = [];
 
 /**
- * Data Katalog & Portofolio Tugas yang aktif ditampilkan pada halaman 'Katalog Tugas'.
- * Set ke [] (kosong) agar tidak menampilkan data dummy.
+ * Data Portofolio Tugas yang aktif ditampilkan pada halaman 'Portofolio'.
  * @type {Array<CatalogItem>}
  */
-export const activeCatalogItems = [];
+export const activeCatalogItems = [
+  {
+    id: "port-1",
+    category: "mahasiswa",
+    categoryLabel: "Mahasiswa",
+    categoryBadgeClass: "bg-primary text-on-primary",
+    subject: "Informatika & AI",
+    title: "Sistem Klasifikasi & Web Dashboard Prediksi",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+    alt: "Skripsi Sistem Informasi AI",
+    statLabel: "Turnitin 6%",
+    grade: "Nilai A (96/100)",
+    duration: "4 Hari",
+    turnitin: "6% Turnitin",
+    statusText: "Lulus Sidang Sempurna",
+    brief: "Implementasi prototipe full stack web dengan integrasi model machine learning dan analisis ISO 25010.",
+    solutions: [
+      "RESTful API dengan FastAPI dan backend PostgreSQL.",
+      "Fine-tuning model klasifikasi teks bahasa Indonesia (F1-score 92%).",
+      "Dokumentasi laporan teknis Bab 4 & Bab 5 lengkap kode beranotasi."
+    ],
+    feedback: "Nilai sidang A dari dewan penguji. Source code bersih dan modul penjelasannya sangat membantu saat ditanya dosen.",
+    client: "R. Pratama • Teknik Informatika"
+  },
+  {
+    id: "port-2",
+    category: "mahasiswa",
+    categoryLabel: "Mahasiswa",
+    categoryBadgeClass: "bg-primary text-on-primary",
+    subject: "Hukum Bisnis",
+    title: "Analisis Yuridis Regulasi Perlindungan Data Konsumen",
+    image: "https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=800&q=80",
+    alt: "Makalah Hukum Bisnis",
+    statLabel: "Turnitin 7%",
+    grade: "Grade A (94/100)",
+    duration: "2 Hari",
+    turnitin: "7% Turnitin",
+    statusText: "Diterima Tanpa Revisi",
+    brief: "Kajian komparatif UU Perlindungan Data Pribadi Indonesia versus GDPR Uni Eropa dengan 30+ referensi jurnal bereputasi.",
+    solutions: [
+      "Penelusuran literatur primer terindeks Scopus & Sinta.",
+      "Pendekatan yuridis normatif dan statute approach.",
+      "Parafrase manual dengan Turnitin murni di bawah 10%."
+    ],
+    feedback: "Dosen terkenal sangat ketat soal sitasi dan parafrase. Makalah langsung di-acc tanpa catatan revisi sama sekali.",
+    client: "A. Saputra • Fakultas Hukum"
+  },
+  {
+    id: "port-3",
+    category: "mahasiswa",
+    categoryLabel: "Mahasiswa",
+    categoryBadgeClass: "bg-primary text-on-primary",
+    subject: "Statistika & Manajemen",
+    title: "Olah Data Structural Equation Modeling (SmartPLS)",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    alt: "Olah Data SmartPLS",
+    statLabel: "100% Valid & Reliabel",
+    grade: "Grade A (95/100)",
+    duration: "24 Jam",
+    turnitin: "Bebas Plagiasi",
+    statusText: "Bimbingan Selesai",
+    brief: "Uji hipotesis model mediasi dan moderasi dengan sampel 250 responden kuesioner.",
+    solutions: [
+      "Uji outer model (convergent & discriminant validity).",
+      "Uji inner model (R-square, f-square, bootstrapping 5000 sampel).",
+      "Narasi interpretasi Bab 4 siap tempel ke draf skripsi."
+    ],
+    feedback: "SmartPLS yang tadinya mentok 2 bulan kelar dalam 1 hari, lengkap video penjelasan cara baca outputnya.",
+    client: "N. Wijaya • Manajemen Bisnis"
+  },
+  {
+    id: "port-4",
+    category: "pelajar",
+    categoryLabel: "Pelajar SMA",
+    categoryBadgeClass: "bg-surface-container-highest text-primary",
+    subject: "Karya Ilmiah Remaja",
+    title: "Karya Tulis Ilmiah (KTI) Bioteknologi Lingkungan",
+    image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=800&q=80",
+    alt: "Karya Tulis Ilmiah Bioteknologi",
+    statLabel: "Juara 2 KTI",
+    grade: "Skor 98/100",
+    duration: "3 Hari",
+    turnitin: "Turnitin 4%",
+    statusText: "Terpilih Tingkat Provinsi",
+    brief: "Penyusunan proposal penelitian pemanfaatan limbah organik menjadi bioplastik ramah lingkungan.",
+    solutions: [
+      "Studi literatur dan metodologi eksperimental yang aplikatif.",
+      "Penyusunan slide presentasi Canva interaktif.",
+      "Simulasi tanya-jawab dengan reviewer."
+    ],
+    feedback: "Presentasinya keren banget dan materinya gampang dipahami juri. Berhasil dapet juara 2!",
+    client: "D. Mahendra • SMAN Jakarta"
+  },
+  {
+    id: "port-5",
+    category: "umum",
+    categoryLabel: "Umum / Pro",
+    categoryBadgeClass: "bg-secondary-container text-on-secondary-fixed",
+    subject: "UI/UX & Desain",
+    title: "Pitch Deck & Prototipe Figma Startup EduTech",
+    image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=800&q=80",
+    alt: "Pitch Deck Startup Figma",
+    statLabel: "15 Slide Pitch",
+    grade: "Pitching Sukses",
+    duration: "2 Hari",
+    turnitin: "Original 100%",
+    statusText: "Final Pitch Deck",
+    brief: "Pembuatan slide pitch deck profesional 15 slide beserta prototipe tampilan antarmuka interaktif.",
+    solutions: [
+      "Struktur slide storytelling berstandar Y Combinator.",
+      "Aset grafis vektor custom dan palet warna modern.",
+      "Format serah terima PPTX, PDF, dan link Figma aktif."
+    ],
+    feedback: "Desain visualnya sangat bersih dan meyakinkan calon investor. Pengerjaan cepat dan komunikatif.",
+    client: "F. Kurnia • Founder EduTech"
+  },
+  {
+    id: "port-6",
+    category: "mahasiswa",
+    categoryLabel: "Mahasiswa",
+    categoryBadgeClass: "bg-primary text-on-primary",
+    subject: "Akuntansi & Keuangan",
+    title: "Analisis Laporan Keuangan & Rasio Profitabilitas 5 Tahun",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    alt: "Analisis Keuangan Excel",
+    statLabel: "Excel Otomatis",
+    grade: "Grade A (93/100)",
+    duration: "1 Hari",
+    turnitin: "Turnitin 5%",
+    statusText: "Selesai Sempurna",
+    brief: "Perhitungan rasio likuiditas, solvabilitas, dan profitabilitas perusahaan terbuka di BEI.",
+    solutions: [
+      "Workbook Excel interaktif dengan formula otomatis dinamis.",
+      "Grafik tren kinerja keuangan 2019-2024.",
+      "Laporan interpretasi deskriptif dan kesimpulan manajerial."
+    ],
+    feedback: "Excel-nya rapi banget pake formula otomatis, laporannya runtut dan dosen langsung kasih nilai A.",
+    client: "T. Wahyuni • Akuntansi"
+  }
+];
 
 /**
  * Data Testimoni Mahasiswa yang aktif ditampilkan pada halaman 'Beranda'.

@@ -1,72 +1,295 @@
+/**
+ * JoKelar — Halaman Kontak (Kontak.js)
+ * Hanya memuat 4 kanal kontak resmi: WhatsApp, Instagram, X, dan Email,
+ * serta alur pengerjaan ringkas dan transparan.
+ * Desain minimalis dan modern.
+ */
 
 export function render() {
   return `
-<div class="flex flex-col w-full">
-<!-- Top Trust Marquee Bar -->
+    <div class="flex flex-col w-full">
+      <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin pt-space-lg pb-space-xl">
+        
+        <!-- Header Minimalis -->
+        <div class="text-center max-w-2xl mx-auto mb-space-xl flex flex-col items-center gap-space-xs">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full">
+            <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            <span class="font-label-badge text-xs uppercase text-primary font-bold tracking-wider">Online 24/7</span>
+          </div>
+          <h1 class="font-headline-lg text-2xl md:text-4xl text-on-surface tracking-tight font-extrabold">
+            Hubungi JoKelar
+          </h1>
+          <p class="font-body-sm text-sm text-on-surface-variant max-w-md">
+            Pilih kanal komunikasi resmi kami di bawah ini untuk konsultasi tugas, tanya estimasi harga, atau diskusi materi.
+          </p>
+        </div>
 
-<!-- Main Container -->
-<div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin py-space-xl">
-<!-- Header Block (Neo-Brutalist Badge & Typography) -->
-<div class="flex flex-col gap-space-sm mb-space-xl relative"><div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md border-b pb-space-lg"><div class="flex flex-col gap-space-xs"><div class="inline-flex items-center gap-space-xs text-primary font-label-code text-label-code font-bold uppercase tracking-wider"><span class="w-2 h-2 rounded-full bg-primary"></span><span class="">Online • Siap Melayani 24/7</span></div><h1 class="font-display-hero text-display-hero text-on-surface tracking-tight leading-none">Hubungi JoKelar.</h1><p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Konsultasi gratis, hitung estimasi biaya, dan serahkan tugas Anda ke tim akademisi terpercaya.</p></div><div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-sm rounded-xl"><span class="material-symbols-outlined text-primary text-xl">schedule</span><div class="flex flex-col"><span class="font-label-badge text-label-badge text-on-surface-variant uppercase">Jam Layanan</span><span class="font-label-code text-label-code text-on-surface font-bold">08.00 - 02.00 WIB (Fast Response)</span></div></div></div></div>
-<!-- 12-Column Responsive Layout -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
-<!-- Left Column: Channel Cards (7 Cols on Desktop) -->
-<div class="lg:col-span-7 flex flex-col gap-space-lg"><div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm border border-surface-container-highest flex flex-col gap-space-md"><div class="flex items-start justify-between"><div class="flex items-center gap-space-md"><div class="w-12 h-12 rounded-xl bg-surface-container-low text-primary flex items-center justify-center font-bold"><span class="material-symbols-outlined text-2xl">chat</span></div><div><span class="font-label-badge text-label-badge text-primary uppercase font-bold tracking-wider">Kanal Resmi</span><h2 class="font-headline-md text-headline-md text-on-surface">WhatsApp Admin</h2></div></div><span class="font-label-code text-label-code text-on-surface-variant">Balas &lt; 5 Menit</span></div><div class="bg-surface-container-low rounded-lg p-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-primary text-xl">call</span><span class="font-label-code text-label-code text-on-surface font-bold text-lg">+62 812-3456-7890</span></div><span class="font-label-code text-label-code text-on-surface-variant">5 Konsultan Standby</span></div><div class="flex flex-col sm:flex-row gap-space-sm"><a class="flex-1 py-2.5 px-space-md bg-primary hover:bg-primary-container text-on-primary font-label-badge text-label-badge uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-space-xs" href="https://wa.me/message/RUK4IFU7KE4YK1message/RUK4IFU7KE4YK1" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-lg">forum</span><span class="">Chat WhatsApp</span></a><button class="py-2.5 px-space-md bg-surface-container-low hover:bg-surface-container text-on-surface font-label-badge text-label-badge uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-space-xs" ><span class="material-symbols-outlined text-lg">content_copy</span><span class="">Salin Nomor</span></button></div></div><div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md"><div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm border border-surface-container-highest flex flex-col justify-between gap-space-md"><div class="flex flex-col gap-space-xs"><div class="w-10 h-10 rounded-lg bg-surface-container-low text-on-surface flex items-center justify-center"><span class="material-symbols-outlined text-xl">photo_camera</span></div><h3 class="font-headline-sm text-headline-sm text-on-surface">Instagram</h3><p class="font-label-code text-label-code text-on-surface-variant font-medium">@jokelar.id</p></div><a class="w-full py-2 px-space-md bg-surface-container-low hover:bg-surface-container text-on-surface font-label-badge text-label-badge uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-space-xs" href="https://www.instagram.com/jokelartugas?stkn=MXI0NjgzZzVxcGV5eg==" target="_blank" rel="noopener noreferrer"><span class="">Kunjungi Akun</span><span class="material-symbols-outlined text-sm">open_in_new</span></a></div><div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm border border-surface-container-highest flex flex-col justify-between gap-space-md"><div class="flex flex-col gap-space-xs"><div class="w-10 h-10 rounded-lg bg-surface-container-low text-on-surface flex items-center justify-center"><span class="material-symbols-outlined text-xl">alternate_email</span></div><h3 class="font-headline-sm text-headline-sm text-on-surface">Twitter / X</h3><p class="font-label-code text-label-code text-on-surface-variant font-medium">@jokelar_tugas</p></div><a class="w-full py-2 px-space-md bg-surface-container-low hover:bg-surface-container text-on-surface font-label-badge text-label-badge uppercase tracking-wider rounded-lg transition-all flex items-center justify-center gap-space-xs" href="https://x.com/JoKelarHub" target="_blank" rel="noopener noreferrer"><span class="">Kunjungi Akun</span><span class="material-symbols-outlined text-sm">open_in_new</span></a></div></div><div class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest flex items-center gap-space-md"><div class="w-10 h-10 rounded-lg bg-surface-container-low text-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-xl">lock</span></div><div class="flex flex-col"><h4 class="font-headline-sm text-headline-sm text-on-surface">Jaminan Kerahasiaan 100%</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Data pribadi dan arsip tugas dienkripsi penuh serta aman tanpa resiko kebocoran identitas.</p></div></div></div>
-<!-- Right Column: Quick Brief Calculator / Auto-WhatsApp Generator (5 Cols on Desktop) -->
-<div class="lg:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-lg relative"><div class="flex items-center justify-between pb-space-sm border-b border-surface-container-highest mb-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-xl">edit_note</span><span class="font-headline-sm text-headline-sm text-on-surface">Kalkulator Brief Tugas</span></div><span class="font-label-code text-label-code text-on-surface-variant">Kirim ke WhatsApp</span></div><form class="flex flex-col gap-space-md" id="orderForm"><div class="flex flex-col gap-1"><label class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">1. Jenjang Pendidikan</label><div class="grid grid-cols-3 gap-2"><label class="cursor-pointer"><input checked="" class="peer sr-only" name="jenjang" type="radio" value="Mahasiswa (S1/D3/S2)"><div class="text-center py-2 px-1 bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary text-on-surface rounded-lg font-body-sm text-body-sm transition-all select-none border border-surface-container-highest">Mahasiswa</div></label><label class="cursor-pointer"><input class="peer sr-only" name="jenjang" type="radio" value="Pelajar (SMA/SMK)"><div class="text-center py-2 px-1 bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary text-on-surface rounded-lg font-body-sm text-body-sm transition-all select-none border border-surface-container-highest">SMA / SMK</div></label><label class="cursor-pointer"><input class="peer sr-only" name="jenjang" type="radio" value="Umum / Profesional"><div class="text-center py-2 px-1 bg-surface-container-low peer-checked:bg-primary peer-checked:text-on-primary text-on-surface rounded-lg font-body-sm text-body-sm transition-all select-none border border-surface-container-highest">Umum</div></label></div></div><div class="flex flex-col gap-1"><label class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant" for="taskType">2. Jenis Tugas</label><div class="relative"><select class="w-full bg-surface-container-low border border-surface-container-highest py-2.5 px-space-md rounded-xl font-body-sm text-body-sm text-on-surface appearance-none outline-none focus:ring-2 focus:ring-primary" id="taskType"><option value="Makalah / Essay / Paper Ilmiah">Makalah / Essay / Paper Ilmiah</option><option value="Skripsi / Tesis / Bab 1-5">Skripsi / Tesis / Proposal Penelitian</option><option value="Coding / Web Dev / Python / Database">Coding / IT / Web Dev / Database</option><option value="Olah Data (SPSS, SEM-PLS, R Studio, Excel)">Olah Data (SPSS / SEM / SmartPLS / Excel)</option><option value="Presentasi PPT / Pitch Deck Kreatif">Presentasi PPT / Slide Pitch Deck</option><option value="Review Jurnal Internasional/Nasional">Review Jurnal / Bibliografi</option><option value="Tugas Matkul Khusus / Hitungan Matematika">Tugas Matkul Khusus / Hitungan / Kasus</option></select><span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none text-xl">expand_more</span></div></div><div class="flex flex-col gap-1"><label class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant">3. Tenggat Waktu (Deadline)</label><div class="grid grid-cols-2 gap-2"><input class="bg-surface-container-low border border-surface-container-highest py-2 px-space-sm rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-2 focus:ring-primary" id="deadlineDate" required="" type="date"><select class="bg-surface-container-low border border-surface-container-highest py-2 px-space-sm rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-2 focus:ring-primary" id="urgencySpeed"><option value="Santai (&gt; 3 Hari)">Santai (&gt; 3 Hari)</option><option value="Standar (24 - 48 Jam)">Standar (24 - 48 Jam)</option><option value="Express Kilat (H-6 s/d H-12 Jam)">Express (6 - 12 Jam)</option><option value="Super Kilat (H-2 Jam)">Super Kilat (&lt; 2 Jam)</option></select></div></div><div class="grid grid-cols-2 gap-space-sm"><div class="flex flex-col gap-1"><label class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant" for="volumeInput">Volume / Halaman</label><input class="bg-surface-container-low border border-surface-container-highest py-2 px-space-sm rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-2 focus:ring-primary" id="volumeInput" placeholder="Misal: 15 Halaman" type="text"></div><div class="flex flex-col gap-1"><label class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant" for="turnitinReq">Target Turnitin</label><select class="bg-surface-container-low border border-surface-container-highest py-2 px-space-sm rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-2 focus:ring-primary" id="turnitinReq"><option value="Bebas Plagiasi (&lt; 20%)">&lt; 20% (Standar)</option><option value="Ketat Maksimal (&lt; 10%)">&lt; 10% (Sangat Ketat)</option><option value="Tidak Perlu Cek">Tidak Perlu Cek</option></select></div></div><div class="flex flex-col gap-1"><label class="font-label-badge text-label-badge uppercase tracking-wider text-on-surface-variant" for="taskNotes">4. Catatan Ringkas (Opsional)</label><textarea class="w-full bg-surface-container-low border border-surface-container-highest p-space-sm rounded-xl font-body-sm text-body-sm text-on-surface outline-none focus:ring-2 focus:ring-primary resize-none" id="taskNotes" placeholder="Judul tugas, instruksi khusus, atau link file cloud..." rows="3"></textarea></div><button class="w-full py-space-sm px-space-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm rounded-xl transition-all flex items-center justify-center gap-space-sm shadow-sm" type="submit"><span class="material-symbols-outlined text-xl">send</span><span class="">Kirim Brief ke WhatsApp</span></button></form></div>
-</div>
-<!-- FAQ & Process Strip -->
-<div class="mt-space-xl pt-space-xl"><div class="flex flex-col items-center text-center mb-space-lg"><span class="font-label-code text-label-code uppercase text-primary font-bold tracking-wider">Transparan &amp; Efisien</span><h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">Alur Pengerjaan di JoKelar</h2></div><div class="grid grid-cols-1 md:grid-cols-4 gap-space-md"><div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-highest flex flex-col justify-between"><div class="flex flex-col gap-space-xs"><div class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-code text-label-code flex items-center justify-center font-bold mb-space-xs">01</div><h4 class="font-headline-sm text-headline-sm text-on-surface">Kirim Materi</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Kirim instruksi tugas dan deadline via WhatsApp.</p></div></div><div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-highest flex flex-col justify-between"><div class="flex flex-col gap-space-xs"><div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface font-label-code text-label-code flex items-center justify-center font-bold mb-space-xs">02</div><h4 class="font-headline-sm text-headline-sm text-on-surface">Deal &amp; DP</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Konfirmasi harga transparan dan bayar DP via QRIS/Transfer.</p></div></div><div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-highest flex flex-col justify-between"><div class="flex flex-col gap-space-xs"><div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface font-label-code text-label-code flex items-center justify-center font-bold mb-space-xs">03</div><h4 class="font-headline-sm text-headline-sm text-on-surface">Pengerjaan</h4><p class="font-body-sm text-body-sm text-on-surface-variant">Tugas dikerjakan konsultan berpengalaman sesuai jadwal.</p></div></div><div class="bg-surface-container-lowest p-space-md rounded-xl border border-surface-container-highest flex flex-col justify-between"><div class="flex flex-col gap-space-xs"><div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface font-label-code text-label-code flex items-center justify-center font-bold mb-space-xs">04</div><h4 class="font-headline-sm text-headline-sm text-on-surface">Terima &amp; Garansi</h4><p class="font-body-sm text-body-sm text-on-surface-variant">File selesai diserahkan beserta garansi revisi gratis.</p></div></div></div></div>
-</div>
-<!-- Inline Script for WhatsApp Generator Interaction -->
+        <!-- 4 Kanal Kontak Resmi (Grid Minimalis Modern) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md max-w-4xl mx-auto mb-space-xl">
+          
+          <!-- 1. WhatsApp -->
+          <div class="bg-surface-container-lowest rounded-2xl p-space-lg border-2 border-primary/20 hover:border-primary shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-space-sm">
+                <div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold">
+                  <span class="material-symbols-outlined text-2xl">chat</span>
+                </div>
+                <div>
+                  <span class="font-label-code text-xs text-primary font-bold uppercase tracking-wider">Fast Response</span>
+                  <h3 class="font-headline-sm text-lg font-black text-on-surface">WhatsApp</h3>
+                </div>
+              </div>
+              <span class="inline-flex items-center gap-1 text-[11px] font-label-code bg-surface-container text-primary px-2.5 py-1 rounded-full font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+                <span>Aktif</span>
+              </span>
+            </div>
+            
+            <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Kanal utama konsultasi langsung dengan admin. Kirimkan soal, silabus, atau deadline tugasmu untuk respon cepat &lt; 5 menit.
+            </p>
 
-</div>
+            <div class="flex items-center gap-2 pt-2 border-t border-surface-container-low">
+              <a 
+                href="https://wa.me/message/RUK4IFU7KE4YK1" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex-1 py-2.5 px-4 bg-primary text-on-primary hover:bg-primary-container font-label-badge text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5 shadow-xs"
+              >
+                <span class="material-symbols-outlined text-base">forum</span>
+                <span>Chat WhatsApp</span>
+              </a>
+              <button 
+                data-copy="https://wa.me/message/RUK4IFU7KE4YK1" 
+                class="copy-btn p-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl transition-colors"
+                title="Salin Link WhatsApp"
+                aria-label="Salin Link WhatsApp"
+              >
+                <span class="material-symbols-outlined text-base pointer-events-none">content_copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Instagram -->
+          <div class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/30 hover:border-primary/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-space-sm">
+                <div class="w-12 h-12 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-2xl">photo_camera</span>
+                </div>
+                <div>
+                  <span class="font-label-code text-xs text-on-surface-variant font-medium">@jokelartugas</span>
+                  <h3 class="font-headline-sm text-lg font-bold text-on-surface">Instagram</h3>
+                </div>
+              </div>
+              <span class="font-label-code text-xs text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-md">Official</span>
+            </div>
+
+            <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Ikuti informasi promo tugas, testimoni berkala, edukasi akademik, dan pembaruan layanan JoKelar melalui feed &amp; story.
+            </p>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-surface-container-low">
+              <a 
+                href="https://www.instagram.com/jokelartugas?stkn=MXI0NjgzZzVxcGV5eg==" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex-1 py-2.5 px-4 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5"
+              >
+                <span>Buka Instagram</span>
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+              </a>
+              <button 
+                data-copy="@jokelartugas" 
+                class="copy-btn p-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl transition-colors"
+                title="Salin Handle Instagram"
+                aria-label="Salin Handle Instagram"
+              >
+                <span class="material-symbols-outlined text-base pointer-events-none">content_copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Twitter / X -->
+          <div class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/30 hover:border-primary/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-space-sm">
+                <div class="w-12 h-12 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-2xl">alternate_email</span>
+                </div>
+                <div>
+                  <span class="font-label-code text-xs text-on-surface-variant font-medium">@jokelarhub</span>
+                  <h3 class="font-headline-sm text-lg font-bold text-on-surface">Twitter / X</h3>
+                </div>
+              </div>
+              <span class="font-label-code text-xs text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-md">Community</span>
+            </div>
+
+            <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Tanya jawab santai seputar tips kuliah, skripsi, diskusi tugas, dan update cepat melalui thread di platform X.
+            </p>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-surface-container-low">
+              <a 
+                href="https://x.com/JoKelarHub" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex-1 py-2.5 px-4 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5"
+              >
+                <span>Buka Akun X</span>
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+              </a>
+              <button 
+                data-copy="@jokelarhub" 
+                class="copy-btn p-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl transition-colors"
+                title="Salin Handle X"
+                aria-label="Salin Handle X"
+              >
+                <span class="material-symbols-outlined text-base pointer-events-none">content_copy</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Email -->
+          <div class="bg-surface-container-lowest rounded-2xl p-space-lg border border-outline-variant/30 hover:border-primary/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between gap-space-md">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-space-sm">
+                <div class="w-12 h-12 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+                  <span class="material-symbols-outlined text-2xl">mail</span>
+                </div>
+                <div>
+                  <span class="font-label-code text-xs text-on-surface-variant font-medium">Email Resmi</span>
+                  <h3 class="font-headline-sm text-lg font-bold text-on-surface">Email</h3>
+                </div>
+              </div>
+              <span class="font-label-code text-xs text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-md">Formal</span>
+            </div>
+
+            <p class="font-body-sm text-xs text-on-surface-variant leading-relaxed">
+              Pengiriman dokumen skala besar, korespondensi institusi, atau kebutuhan kolaborasi akademik: <b class="text-on-surface">jokelartugas@gmail.com</b>
+            </p>
+
+            <div class="flex items-center gap-2 pt-2 border-t border-surface-container-low">
+              <a 
+                href="mailto:jokelartugas@gmail.com" 
+                class="flex-1 py-2.5 px-4 bg-surface-container hover:bg-surface-container-high text-on-surface font-label-badge text-xs uppercase tracking-wider rounded-xl transition-all flex items-center justify-center gap-1.5"
+              >
+                <span>Kirim Email</span>
+                <span class="material-symbols-outlined text-sm">send</span>
+              </a>
+              <button 
+                data-copy="jokelartugas@gmail.com" 
+                class="copy-btn p-2.5 bg-surface-container hover:bg-surface-container-high text-on-surface rounded-xl transition-colors"
+                title="Salin Alamat Email"
+                aria-label="Salin Alamat Email"
+              >
+                <span class="material-symbols-outlined text-base pointer-events-none">content_copy</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Alur Singkat Pemesanan (7 Langkah Ringkas) -->
+        <div class="max-w-4xl mx-auto bg-surface-container-low rounded-2xl p-space-lg border border-outline-variant/30">
+          <div class="flex items-center justify-between pb-space-sm border-b border-surface-container mb-space-md">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+              <h3 class="font-headline-sm text-sm md:text-base font-bold text-on-surface">Alur Pengerjaan Setelah Menghubungi Kami</h3>
+            </div>
+            <a href="#catalog" class="font-label-code text-xs text-primary font-bold hover:underline flex items-center gap-0.5">
+              <span>Detail Alur</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-2 text-center">
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">1</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">Konsultasi</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">Kirim detail</span>
+            </div>
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">2</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">Deal</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">Estimasi harga</span>
+            </div>
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-secondary-container text-on-secondary-fixed font-label-code text-xs font-bold flex items-center justify-center mb-1">3</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">DP 50%</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">Masuk antrean</span>
+            </div>
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">4</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">Pengerjaan</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">Sesuai keahlian</span>
+            </div>
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-secondary-container text-on-secondary-fixed font-label-code text-xs font-bold flex items-center justify-center mb-1">5</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">Revisi</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">Maks 2x cek</span>
+            </div>
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-secondary-container text-on-secondary-fixed font-label-code text-xs font-bold flex items-center justify-center mb-1">6</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">Pelunasan</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">File final</span>
+            </div>
+            <div class="bg-surface-container-lowest p-2 rounded-xl flex flex-col items-center">
+              <span class="w-6 h-6 rounded-md bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">7</span>
+              <span class="font-headline-sm text-xs font-bold text-on-surface">Garansi</span>
+              <span class="text-[10px] text-on-surface-variant mt-0.5">Garansi 7 hari</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Toast Feedback (Copy Notice) -->
+      <div id="copyToast" class="fixed bottom-6 right-6 z-50 hidden bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-xl text-xs font-label-code shadow-lg items-center gap-2 transition-all">
+        <span class="material-symbols-outlined text-base text-secondary-container">check_circle</span>
+        <span id="copyToastText">Berhasil disalin ke clipboard!</span>
+      </div>
+    </div>
   `;
 }
 
 export function init() {
+  const copyBtns = document.querySelectorAll('.copy-btn');
+  const toast = document.getElementById('copyToast');
+  const toastText = document.getElementById('copyToastText');
+  let timeoutId = null;
 
-    // Set default min date for deadline picker to today
-    (function initDatePicker() {
-      const dateInput = document.getElementById('deadlineDate');
-      if (dateInput) {
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.min = today;
-        dateInput.value = today;
+  function showToast(msg) {
+    if (!toast) return;
+    if (toastText) toastText.textContent = msg;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 2200);
+  }
+
+  copyBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const textToCopy = btn.getAttribute('data-copy');
+      if (!textToCopy) return;
+
+      try {
+        await navigator.clipboard.writeText(textToCopy);
+        showToast(`Tersalin: ${textToCopy}`);
+      } catch (err) {
+        // Fallback for clipboard
+        const input = document.createElement('input');
+        input.value = textToCopy;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        document.body.removeChild(input);
+        showToast(`Tersalin: ${textToCopy}`);
       }
-    })();
-
-    function sendToWhatsApp() {
-      const jenjangEl = document.querySelector('input[name="jenjang"]:checked');
-      const jenjang = jenjangEl ? jenjangEl.value : 'Mahasiswa';
-      const taskType = document.getElementById('taskType').value;
-      const deadlineDate = document.getElementById('deadlineDate').value;
-      const urgencySpeed = document.getElementById('urgencySpeed').value;
-      const volumeInput = document.getElementById('volumeInput').value || '-';
-      const turnitinReq = document.getElementById('turnitinReq').value;
-      const taskNotes = document.getElementById('taskNotes').value || 'Mohon dibantu konfirmasi ketersediaan slot.';
-
-      const message = `Halo Admin JoKelar, saya ingin konsultasi pengerjaan tugas:%0A%0A` +
-        `📚 *Jenjang*: ${encodeURIComponent(jenjang)}%0A` +
-        `📝 *Jenis Tugas*: ${encodeURIComponent(taskType)}%0A` +
-        `⏱️ *Deadline*: ${encodeURIComponent(deadlineDate)} (${encodeURIComponent(urgencySpeed)})%0A` +
-        `📄 *Estimasi Volume*: ${encodeURIComponent(volumeInput)}%0A` +
-        `🔍 *Cek Plagiasi*: ${encodeURIComponent(turnitinReq)}%0A` +
-        `📌 *Catatan / Keterangan*: ${encodeURIComponent(taskNotes)}%0A%0A` +
-        `Mohon estimasi harga dan waktu pengerjaannya. Terima kasih!`;
-
-      const waUrl = `https://wa.me/message/RUK4IFU7KE4YK1`;
-      window.open(waUrl, '_blank');
-    }
-
-    const orderForm = document.getElementById('orderForm');
-    if (orderForm) {
-      orderForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        sendToWhatsApp();
-      });
-    }
-
-  
-
+    });
+  });
 }

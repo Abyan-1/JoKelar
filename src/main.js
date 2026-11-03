@@ -11,6 +11,7 @@ import { renderFooter } from './components/Footer.js';
 // Page Modules
 import * as Beranda from './pages/Beranda.js';
 import * as Katalog from './pages/Katalog.js';
+import * as Portofolio from './pages/Portofolio.js';
 import * as Pendiri from './pages/Pendiri.js';
 import * as Kontak from './pages/Kontak.js';
 
@@ -37,7 +38,10 @@ function initApp() {
 
   // Register Routes
   addRoute('beranda', Beranda);
+  addRoute('catalog', Katalog);
+  addRoute('katalog', Katalog);
   addRoute('katalog-tugas', Katalog);
+  addRoute('portofolio', Portofolio);
   addRoute('pendiri', Pendiri);
   addRoute('kontak', Kontak);
 

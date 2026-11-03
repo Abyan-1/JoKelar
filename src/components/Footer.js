@@ -32,20 +32,21 @@ export function renderFooter() {
             <h3 class="font-label-badge text-label-badge text-on-surface uppercase tracking-wider">Navigasi</h3>
             <ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
               <li><a class="hover:text-primary transition-colors" data-path="beranda" href="#beranda">Beranda</a></li>
-              <li><a class="hover:text-primary transition-colors" data-path="katalog-tugas" href="#katalog-tugas">Katalog Tugas</a></li>
+              <li><a class="hover:text-primary transition-colors" data-path="catalog" href="#catalog">Catalog</a></li>
+              <li><a class="hover:text-primary transition-colors" data-path="portofolio" href="#portofolio">Portofolio</a></li>
               <li><a class="hover:text-primary transition-colors" data-path="pendiri" href="#pendiri">Pendiri &amp; Tim</a></li>
-              <li><a class="hover:text-primary transition-colors" data-path="kontak" href="#kontak">Hubungi Kami</a></li>
+              <li><a class="hover:text-primary transition-colors" data-path="kontak" href="#kontak">Kontak</a></li>
             </ul>
           </div>
 
           <!-- Categories Column -->
           <div class="md:col-span-2 flex flex-col gap-space-sm">
-            <h3 class="font-label-badge text-label-badge text-on-surface uppercase tracking-wider">Kategori</h3>
+            <h3 class="font-label-badge text-label-badge text-on-surface uppercase tracking-wider">Layanan</h3>
             <ul class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
-              <li><span class="hover:text-on-surface cursor-pointer" data-path="katalog-tugas">Makalah &amp; Esai</span></li>
-              <li><span class="hover:text-on-surface cursor-pointer" data-path="katalog-tugas">Coding &amp; IT</span></li>
-              <li><span class="hover:text-on-surface cursor-pointer" data-path="katalog-tugas">Olah Data &amp; Skripsi</span></li>
-              <li><span class="hover:text-on-surface cursor-pointer" data-path="katalog-tugas">Tugas Sekolah SMA</span></li>
+              <li><a class="hover:text-on-surface cursor-pointer" data-path="catalog" href="#catalog">Website &amp; Aplikasi</a></li>
+              <li><a class="hover:text-on-surface cursor-pointer" data-path="catalog" href="#catalog">Database &amp; Data</a></li>
+              <li><a class="hover:text-on-surface cursor-pointer" data-path="catalog" href="#catalog">Laporan &amp; Dokumen</a></li>
+              <li><a class="hover:text-on-surface cursor-pointer" data-path="catalog" href="#catalog">Desain &amp; Presentasi</a></li>
             </ul>
           </div>
 

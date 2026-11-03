@@ -59,7 +59,7 @@ export function renderFeaturedServiceCard(service) {
               ${service.startingPrice} <span class="text-xs font-normal text-on-surface-variant">${service.priceUnit || ''}</span>
             </div>
           </div>
-          <a class="p-2 bg-surface-container-highest rounded-lg text-on-surface hover:bg-primary hover:text-on-primary transition-colors" data-path="${service.targetPath || 'katalog-tugas'}" href="#${service.targetPath || 'katalog-tugas'}">
+          <a class="p-2 bg-surface-container-highest rounded-lg text-on-surface hover:bg-primary hover:text-on-primary transition-colors" data-path="${service.targetPath || 'catalog'}" href="#${service.targetPath || 'catalog'}">
             <span class="material-symbols-outlined text-lg">arrow_forward</span>
           </a>
         </div>
@@ -203,8 +203,8 @@ function renderEmptyFeaturedServicesState() {
         Daftar layanan terpopuler akan otomatis muncul setelah integrasi database. Anda dapat melihat katalog lengkap atau langsung berkonsultasi via WhatsApp.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-space-sm pt-space-xs">
-        <a class="px-space-md py-space-xs bg-primary text-on-primary rounded-full font-body-sm text-body-sm font-semibold hover:bg-primary-container transition-all shadow-sm" data-path="katalog-tugas" href="#katalog-tugas">
-          Buka Katalog Tugas
+        <a class="px-space-md py-space-xs bg-primary text-on-primary rounded-full font-body-sm text-body-sm font-semibold hover:bg-primary-container transition-all shadow-sm" data-path="catalog" href="#catalog">
+          Buka Catalog
         </a>
         <a class="px-space-md py-space-xs bg-surface-container text-on-surface rounded-full font-body-sm text-body-sm font-semibold hover:bg-surface-container-high transition-all" href="https://wa.me/message/RUK4IFU7KE4YK1" target="_blank" rel="noopener noreferrer">
           Tanya Layanan via WA
@@ -266,8 +266,8 @@ export function render() {
               Dukungan pengerjaan terstruktur, bebas plagiasi, dan selesai tepat waktu oleh mentor berpengalaman.
             </p>
             <div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
-              <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-primary text-on-primary font-body-sm text-body-sm font-semibold rounded-lg hover:bg-primary-container transition-all shadow-sm" data-path="katalog-tugas" href="#katalog-tugas">
-                <span>Lihat Layanan</span>
+              <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-primary text-on-primary font-body-sm text-body-sm font-semibold rounded-lg hover:bg-primary-container transition-all shadow-sm" data-path="catalog" href="#catalog">
+                <span>Lihat Catalog</span>
                 <span class="material-symbols-outlined text-base">arrow_forward</span>
               </a>
               <a class="inline-flex items-center gap-space-xs px-space-lg py-space-sm bg-surface-container-lowest text-on-surface font-body-sm text-body-sm font-semibold rounded-lg hover:bg-surface-container transition-all shadow-sm" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
@@ -362,31 +362,54 @@ export function render() {
         </div>
       </section>
 
-      <!-- Alur Pemesanan 3 Langkah Praktis -->
+      <!-- Alur Pemesanan 7 Langkah Ringkas -->
       <section class="w-full bg-surface-container py-space-xl">
-        <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin flex flex-col gap-space-xl">
-          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+        <div class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin flex flex-col gap-space-lg">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
             <div>
               <span class="font-label-badge text-label-badge text-primary uppercase tracking-widest font-bold">Alur Kerja</span>
-              <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-extrabold mt-1">3 Langkah Mudah</h2>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-extrabold mt-1">Workflow Pemesanan</h2>
             </div>
-            <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Pemesanan cepat dan praktis tanpa prosedur berbelit.</p>
+            <a class="font-headline-sm text-sm text-primary hover:underline flex items-center gap-1" data-path="catalog" href="#catalog">
+              <span>Lihat Detail Alur di Catalog</span>
+              <span class="material-symbols-outlined text-sm">east</span>
+            </a>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm border border-surface-container-high">
-              <span class="font-headline-lg text-headline-lg text-primary font-black">01</span>
-              <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold text-base">Kirim Detail Tugas</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Sampaikan petunjuk, format acuan, dan tenggat waktu tugasmu.</p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-space-xs text-center">
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center">
+              <span class="w-7 h-7 rounded-lg bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">1</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">Konsultasi</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Kirim materi &amp; deadline</p>
             </div>
-            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm border border-surface-container-high">
-              <span class="font-headline-lg text-headline-lg text-primary font-black">02</span>
-              <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold text-base">Konfirmasi &amp; Pengerjaan</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Sepakati estimasi biaya serta timeline pengerjaan dengan admin.</p>
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center">
+              <span class="w-7 h-7 rounded-lg bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">2</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">Deal</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Estimasi &amp; timeline</p>
             </div>
-            <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-sm border border-surface-container-high">
-              <span class="font-headline-lg text-headline-lg text-primary font-black">03</span>
-              <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold text-base">Hasil Siap Dikirim</h3>
-              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Terima hasil rapi, cek bukti Turnitin, dan konsultasikan revisi bila perlu.</p>
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center">
+              <span class="w-7 h-7 rounded-lg bg-secondary-container text-on-secondary-fixed font-label-code text-xs font-bold flex items-center justify-center mb-1">3</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">DP 50%</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Masuk antrean</p>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center">
+              <span class="w-7 h-7 rounded-lg bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">4</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">Pengerjaan</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Sesuai keahlian</p>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center">
+              <span class="w-7 h-7 rounded-lg bg-secondary-container text-on-secondary-fixed font-label-code text-xs font-bold flex items-center justify-center mb-1">5</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">Revisi</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Maks. 2x revisi</p>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center">
+              <span class="w-7 h-7 rounded-lg bg-secondary-container text-on-secondary-fixed font-label-code text-xs font-bold flex items-center justify-center mb-1">6</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">Pelunasan</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Serah terima file</p>
+            </div>
+            <div class="bg-surface-container-lowest p-space-sm rounded-xl border border-surface-container-high flex flex-col items-center col-span-2 sm:col-span-1">
+              <span class="w-7 h-7 rounded-lg bg-primary text-on-primary font-label-code text-xs font-bold flex items-center justify-center mb-1">7</span>
+              <h4 class="font-headline-sm text-xs font-bold text-on-surface">Follow-up</h4>
+              <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Garansi 7 hari</p>
             </div>
           </div>
         </div>
@@ -403,8 +426,8 @@ export function render() {
               Layanan yang Paling Banyak Dipesan
             </h2>
           </div>
-          <a class="font-headline-sm text-headline-sm text-primary hover:text-on-surface transition-colors flex items-center gap-1" data-path="katalog-tugas" href="#katalog-tugas">
-            <span>Buka Katalog Lengkap</span>
+          <a class="font-headline-sm text-headline-sm text-primary hover:text-on-surface transition-colors flex items-center gap-1" data-path="catalog" href="#catalog">
+            <span>Buka Catalog Lengkap</span>
             <span class="material-symbols-outlined">east</span>
           </a>
         </div>
@@ -456,8 +479,8 @@ export function render() {
             <a class="px-space-lg py-space-sm bg-surface-container-lowest text-primary font-body-sm text-body-sm font-bold rounded-lg transition-all hover:bg-surface-container text-center shadow-sm" href="https://wa.me/message/RUK4IFU7KE4YK1" rel="noopener noreferrer" target="_blank">
               Konsultasi WhatsApp
             </a>
-            <a class="px-space-lg py-space-sm bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold rounded-lg transition-all hover:opacity-90 text-center shadow-sm" data-path="katalog-tugas" href="#katalog-tugas">
-              Katalog Lengkap
+            <a class="px-space-lg py-space-sm bg-primary-container text-on-primary font-body-sm text-body-sm font-semibold rounded-lg transition-all hover:opacity-90 text-center shadow-sm" data-path="catalog" href="#catalog">
+              Buka Catalog
             </a>
           </div>
         </div>

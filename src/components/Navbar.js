@@ -14,7 +14,8 @@ export function renderNavbar() {
 
   const navLinks = [
     { path: 'beranda', label: 'Beranda' },
-    { path: 'katalog-tugas', label: 'Katalog Tugas' },
+    { path: 'catalog', label: 'Catalog' },
+    { path: 'portofolio', label: 'Portofolio' },
     { path: 'pendiri', label: 'Pendiri' },
     { path: 'kontak', label: 'Kontak' },
   ];
@@ -123,10 +124,12 @@ export function updateNavbarActive(activePath) {
   const nav = document.getElementById('main-navbar');
   if (!nav) return;
 
+  const normalizedPath = (activePath === 'katalog-tugas' || activePath === 'katalog') ? 'catalog' : activePath;
+
   // Update desktop nav
   nav.querySelectorAll('nav a[data-path]').forEach((link) => {
     const path = link.getAttribute('data-path');
-    if (path === activePath) {
+    if (path === normalizedPath) {
       link.className = 'px-space-md py-space-sm transition-colors bg-surface-container text-primary font-bold rounded-xl';
       link.setAttribute('aria-current', 'page');
     } else {
@@ -140,7 +143,7 @@ export function updateNavbarActive(activePath) {
   if (mobileMenu) {
     mobileMenu.querySelectorAll('a[data-path]').forEach((link) => {
       const path = link.getAttribute('data-path');
-      if (path === activePath) {
+      if (path === normalizedPath) {
         link.className = 'block px-space-md py-space-sm bg-surface-container text-primary font-bold rounded-xl';
       } else {
         link.className = 'block px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors rounded-xl';
